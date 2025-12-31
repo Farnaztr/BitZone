@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitZone Login </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+         <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="login.css">
+   <link rel="icon" type="image/png" href="images/bitzone.png">
+
+</head>
+<body>
+
+    <div class="scanline"></div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div id="bit-intro" dir="ltr">
+        <div id="intro-text">BITZONE</div>
+        <div class="loading-container">
+            <div class="bar-bg">
+                <div class="bar-fill" id="progress-bar"></div>
+            </div>
+            <p id="status-text">INITIALIZING SYSTEMS...</p>
+        </div>
+    </div>
+    <div class="login-card" id="login-card">
+        <div class="card-header">
+            <i class="fas fa-microchip"></i>
+            <h2>ورود به منطقه بیت</h2>
+        </div>
+        
+     <form id="auth-form">
+    <div class="input-group">
+        <i class="fas fa-user-code"></i>
+        <input type="text" id="user-identifier" placeholder="نام کاربری یا ایمیل" required>
+    </div>
+    <div class="input-group">
+        <i class="fas fa-key"></i>
+        <input type="password" id="user-password" placeholder="گذرواژه امنیتی" required>
+    </div>
+    <button type="submit" class="submit-btn">تایید هویت و ورود</button>
+</form>
+<div class="card-footer">
+    <a href="#" onclick="window.openRegisterModal(event)">ثبت‌نام کاربر جدید</a>
+    <span>|</span>
+    <a href="#" id="forgot-btn">فراموشی کلید دسترسی</a>
+    <p id="forgot-message" style="display:none; color: #bc13fe; margin-top:10px; font-size: 12px; font-weight: bold;"></p>
+</div>
+<div id="registerModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+    <div style="background: #0f0a19; border: 1px solid #bc13fe; padding: 25px; border-radius: 20px; width: 350px; color: white;">
+        <h3 style="color: #bc13fe; text-align: center;">ثبت‌نام امن در بیت‌زون</h3>
+        
+        <label>نام کاربری:</label>
+        <input type="text" id="regUser" style="width:100%; padding:8px; margin:10px 0; background:#1a1425; border:1px solid #444; color:white; border-radius:5px;">
+        
+        <label>رمز عبور:</label>
+        <input type="password" id="regPass" style="width:100%; padding:8px; margin:10px 0; background:#1a1425; border:1px solid #444; color:white; border-radius:5px;">
+        
+        <label style="font-size: 12px; color: #aaa;">سوال امنیتی (برای بازیابی رمز): نام اولین معلم شما؟</label>
+        <input type="text" id="regAnswer" placeholder="پاسخ سوال امنیتی" style="width:100%; padding:8px; margin:10px 0; background:#1a1425; border:1px solid #444; color:white; border-radius:5px;">
+        
+        <button onclick="window.processRegistration()" style="width:100%; padding:10px; background:#bc13fe; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold; margin-top:10px;">ساخت حساب کاربری</button>
+        <button onclick="window.closeRegisterModal()" style="width:100%; background:none; border:none; color:#888; cursor:pointer; margin-top:10px;">انصراف</button>
+    </div>
+</div>
+<div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(188, 19, 254, 0.2); display: flex; justify-content: center; width: 100%;">
+        <a href="index.html" 
+           style="text-decoration: none; color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; display: flex; align-items: center; gap: 8px; transition: 0.3s;" 
+           onmouseover="this.style.color='#bc13fe'; this.style.transform='scale(1.05)';" 
+           onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.transform='scale(1)';"
+        >
+            <i class="fas fa-arrow-right"></i> 
+            <span>بازگشت به صفحه اصلی</span>
+        </a>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

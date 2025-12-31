@@ -1,0 +1,689 @@
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BitZone - مسیرهای برنامه‌نویسی</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        
+        <link rel="stylesheet" href="font.css">
+        <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="images/bitzone.png" title="BitZone Icon">
+    </head>
+    <body>
+
+        <nav class="navbar">
+    <div class="nav-container">
+        
+        <div class="right-nav">
+            <div class="nav-logo">
+<img src="images/bitzone.png" alt="BitZone Logo" title="لوگوی بیت‌زون" class="logo">
+                <span class="logo-text">BitZone</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link">خانه</a></li>
+                <li><a href="#videos" class="nav-link">آموزش‌ها</a></li> 
+                <li><a href="gallery.html" class="nav-link">گالری تصاویر</a></li> 
+                <li><a href="#paths" class="nav-link">مسیرها</a></li>
+                <li><a href="#challenges" class="nav-link">چالش‌ها</a></li>
+                <li><a href="#community" class="nav-link">جامعه</a></li>
+<li>
+   <a href="javascript:void(0)" class="nav-link" onclick="openContactModal(event)">تماس با ما</a>
+</li>        
+<li class="nav-item">
+    <a href="javascript:void(0)" class="nav-link join-btn" onclick="toggleSurvey()">نظرسنجی</a>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="login-container">
+            <div class="theme-switch">
+                <i class="fa-solid fa-moon" id="moonIcon"></i>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="themeCheckbox">
+                    <span class="slider"></span>
+                </label>
+                <i class="fa-solid fa-sun" id="sunIcon"></i>
+            </div>
+            
+            <div id="user-status-area">
+                <a href="login.html" class="login">ورود / ثبت نام</a> 
+            </div>
+
+            <div id="user-dropdown" class="user-dropdown-content" style="display:none; position: absolute; background: #1a1b2e; border: 1px solid #8b5cf6; padding: 15px; border-radius: 10px; left: 20px; top: 70px; z-index: 1000; min-width: 180px;">
+                <p style="color: #fff; margin-bottom: 10px;"><i class="fas fa-user"></i> <span id="user-name-display"></span></p>
+                <hr style="border: 0.1px solid #2d2d42;">
+                <button onclick="logout()" style="background: none; border: none; color: #ff4d4d; cursor: pointer; margin-top: 10px;"><i class="fas fa-sign-out-alt"></i> خروج</button>
+            </div>        
+        </div>
+
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+        
+  <!-- منوی موبایل -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="close-mobile-menu" onclick="toggleMobileMenu()">&times;</button>
+    <a href="#hero" class="mobile-nav-link" onclick="toggleMobileMenu()">خانه</a>
+    <a href="#videos" class="mobile-nav-link" onclick="toggleMobileMenu()">آموزش‌ها</a>
+    <a href="gallery.html" class="mobile-nav-link" onclick="toggleMobileMenu()">گالری تصاویر</a>
+    <a href="#paths" class="mobile-nav-link" onclick="toggleMobileMenu()">مسیرها</a>
+    <a href="#challenges" class="mobile-nav-link" onclick="toggleMobileMenu()">چالش‌ها</a>
+    <a href="#community" class="mobile-nav-link" onclick="toggleMobileMenu()">جامعه</a>
+    <a href="javascript:void(0)" class="mobile-nav-link" onclick="openContactModal(); toggleMobileMenu()">تماس با ما</a>
+    <a href="javascript:void(0)" class="mobile-nav-link" onclick="toggleSurvey(); toggleMobileMenu()">نظرسنجی</a>
+    
+    <div id="mobile-user-status" style="margin-top: 20px;">
+        <a href="login.html" class="mobile-login-btn">ورود / ثبت نام</a>
+    </div>
+</div>
+
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">کدنویسی را با <span class="highlight">BitZone</span> شروع کن!</h1>
+                    <p class="hero-description">مسیر یادگیری خود را پیدا کنید، با چالش‌های واقعی کدنویسی کنید و به جامعه‌ای از متخصصان بپیوندید. آینده برنامه‌نویسی منتظر شماست.</p>
+                    <div class="hero-buttons">
+    <a href="#paths" class="cta-btn primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;"> مسیرهای یادگیری</a>
+    <a href="#videos" class="cta-btn secondary">ویدیوهای رایگان</a>
+</div>  
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15K+</div>
+                            <div class="stat-label">دانشجو فعال</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">چالش کدنویسی</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">مسیر تخصصی</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <i class="fa-solid fa-code card-icon"></i>
+                        <span>چالش روزانه</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fa-solid fa-database card-icon"></i>
+                        <span>امنیت داده</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fa-solid fa-microchip card-icon"></i>
+                        <span>AI/ML</span>
+                    </div>
+                    <div class="code-visual">
+                        <div class="code-line"><span class="code-keyword">function</span> <span class="code-function">findPath</span>(user) {</div>
+                        <div class="code-line">  <span class="code-keyword">if</span> (user.score > 80) {</div>
+                        <div class="code-line">    <span class="code-keyword">return</span> <span class="code-function">'Expert'</span>;</div>
+                        <div class="code-line">  }</div>
+                        <div class="code-line">}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="videos-section" id="videos">
+            <div class="container">
+                <h2 class="section-title">آموزش‌های ویدیویی رایگان</h2>
+                <div class="videos-grid">
+                    
+                <div class="video-card cyber-card">
+            <div class="video-player">
+<video class="video-element" autoplay loop muted playsinline poster="images/cyber.png" title="پیش‌نمایش دوره امنیت سایبری"></video>                <div class="hover-overlay">
+                </div>
+                <div class="scan-line"></div>
+            </div>
+            <div class="video-card-content">
+                <h3 class="video-title">پنل کنترل امنیت سایبری</h3>
+                <div class="video-meta">
+                    <span class="video-tag cyber-tag">SECURITY PANEL</span>
+                    <span class="teacher">تیم امنیت سایبری</span>
+                </div>
+                <p class="video-description">آموزش کامل پیاده‌سازی پنل کنترل امنیتی با مانیتورینگ لحظه‌ای و تحلیل تهدیدات.</p>
+                <button class="watch-btn locked cyber-btn" onclick="goToCourse('course-cyber.html')">
+                    <span class="btn-text">ورود به پنل امنیتی</span>
+                    <i class="fas fa-terminal"></i>
+                </button>
+            </div>
+        </div>
+
+
+
+              <div class="video-card python-premium-card">
+    <div class="video-player">
+<video class="video-element" autoplay loop muted playsinline poster="images/py.png" title="پیش‌نمایش دوره پایتون"></video>
+            <source src="videos/python-loop.mp4" type="video/mp4">
+        </video>
+        <i class="fab fa-python special-card-icon"></i>
+        <div class="hover-overlay"></div>
+    </div>
+    <div class="video-card-content">
+        <h3 class="video-title">مبانی پایتون و دیتا</h3>
+        <div class="video-meta">
+            <span class="video-tag">AI/ML</span>
+            <span>مدرس: احمدی</span>
+        </div>
+        <p class="video-description">آموزش نصب پایتون، محیط‌های کاربری و شروع کار با کتابخانه‌های قدرتمند Pandas و NumPy برای تحلیل داده.</p>
+        <button class="watch-btn locked" onclick="goToCourse('course-python.html')">
+            <span class="btn-text">تماشا کنید (قفل است)</span>
+            <i class="fas fa-lock"></i>
+        </button>
+    </div>
+</div>
+
+        <div class="video-card iot-special-card"> <div class="video-player">
+<video class="video-element" autoplay loop muted playsinline poster="images/iot.png" title="پیش‌نمایش دوره اینترنت اشیا"></video>
+            <source src="videos/iot-preview.mp4" type="video/mp4">
+        </video>
+        <i class="fas fa-microchip hardware-icon"></i>
+        <div class="hover-overlay"></div>
+    </div>
+    <div class="video-card-content">
+        <h3 class="video-title">هوشمندسازی اتاق با IoT</h3>
+        <div class="video-meta">
+            <span class="video-tag iot">Hardware & IoT</span>
+            <span>تیم بیت زون</span>
+        </div>
+        <p class="video-description">آموزش گام‌به‌گام کنترل روشنایی اتاق با موبایل با استفاده از برد ESP8266 و کدهای ++C.</p>
+        
+        <button class="watch-btn iot-btn" onclick="goToCourse('course-iot.html')">
+            <span class="btn-text">مشاهده پروژه عملی</span>
+            <i class="fas fa-microchip"></i>
+        </button>
+    </div>
+</div>
+            </div>
+        </div>
+    </section>
+
+        <section class="popular-paths" id="paths">
+            <div class="container">
+                <h2 class="section-title">مسیرهای محبوب یادگیری </h2>
+                <div class="paths-grid">
+                    
+                    <div class="path-card">
+                        <div class="path-header">
+                            <i class="fa-solid fa-palette path-icon gradient-text"></i>
+                            <span class="path-badge">تخصصی</span>
+                        </div>
+                        <h3 class="path-title">توسعه دهنده فرانت‌اند</h3>
+                        <p class="path-description">تسلط بر HTML, CSS, JavaScript و فریمورک‌هایی مانند React یا Vue برای ساخت رابط‌های کاربری جذاب و پاسخگو.</p>
+                        <div class="path-meta">
+                            <span class="meta-item">React</span>
+                            <span class="meta-item">UX/UI</span>
+                            <span class="meta-item">6 ماه</span>
+                        </div>
+<button class="path-btn" onclick="window.location.href='roadmap-frontend.html'">دیدن مسیر</button>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-header">
+                            <i class="fa-solid fa-server path-icon gradient-text"></i>
+                            <span class="path-badge">مقدماتی</span>
+                        </div>
+                        <h3 class="path-title">توسعه دهنده بک‌اند</h3>
+                        <p class="path-description">آموزش زبان‌های سمت سرور مانند Python/Node.js، مدیریت دیتابیس و طراحی API‌های قدرتمند و امن.</p>
+                        <div class="path-meta">
+                            <span class="meta-item">Python</span>
+                            <span class="meta-item">SQL/NoSQL</span>
+                            <span class="meta-item">7 ماه</span>
+                        </div>
+<button class="path-btn" onclick="window.location.href='roadmap-backend.html'">دیدن مسیر</button>                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-header">
+                            <i class="fa-solid fa-brain path-icon gradient-text"></i>
+                            <span class="path-badge">پیشرفته</span>
+                        </div>
+                        <h3 class="path-title">متخصص هوش مصنوعی</h3>
+                        <p class="path-description">ورود به دنیای Machine Learning، Deep Learning و پردازش داده‌ها برای ساخت مدل‌های پیش‌بینی و هوشمند.</p>
+                        <div class="path-meta">
+                            <span class="meta-item">ML</span>
+                            <span class="meta-item">TensorFlow</span>
+                            <span class="meta-item">8 ماه</span>
+                        </div>
+<button class="path-btn" onclick="window.location.href='roadmap-ai.html'">دیدن مسیر</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    
+        <section class="community-section" id="community">
+            <div class="container">
+                <h2 class="section-title">به جامعه برنامه‌نویسی بپیوندید </h2>
+                <p class="community-content" style="text-align: center; color: var(--text-secondary);">در انجمن ما، دانش خود را به اشتراک بگذارید، سوال بپرسید و با دیگران همکاری کنید.</p>
+                
+                <div class="community-features">
+                    <div class="community-feature">
+                        <i class="fa-brands fa-discord feature-icon gradient-text"></i>
+                        <h3>سرور دیسکورد</h3>
+                        <p>گفتگوهای زنده، کمک فوری و جلسات گروهی برای حل مشکل.</p>
+                    </div>
+                    <div class="community-feature">
+                        <i class="fa-solid fa-comments feature-icon gradient-text"></i>
+                        <h3>تالار گفتگو</h3>
+                        <p>پاسخ‌های عمیق و سازماندهی شده به سوالات فنی شما.</p>
+                    </div>
+                    <div class="community-feature">
+                        <i class="fa-solid fa-user-group feature-icon gradient-text"></i>
+                        <h3>گروه‌های مطالعه</h3>
+                        <p>با هم‌مسیران خود گروه‌های مطالعه تشکیل دهید و تمرین کنید.</p>
+                    </div>
+                </div>
+
+                <div class="community-stats">
+                    <div class="community-stat">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">عضو فعال</div>
+                    </div>
+                    <div class="community-stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">موضوع هفتگی</div>
+                    </div>
+                    <div class="community-stat">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">پشتیبانی همکار</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="why-bitzone">
+            <div class="container">
+                <h2 class="section-title">چرا <span class="highlight">BitZone</span> را انتخاب کنید؟</h2>
+                <div class="features-grid">
+                    
+                    <div class="feature-card">
+                        <i class="fa-solid fa-graduation-cap feature-icon gradient-text"></i>
+                        <h3>یادگیری عملی</h3>
+                        <p>تمرکز بر پروژه‌های واقعی و چالش‌های عملی برای تسلط کامل بر مهارت.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fa-solid fa-shield-halved feature-icon gradient-text"></i>
+                        <h3>پشتیبانی تخصصی</h3>
+                        <p>در هر مرحله از مسیر، توسط مربیان مجرب راهنمایی خواهید شد.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fa-solid fa-bolt feature-icon gradient-text"></i>
+                        <h3>مسیرهای به‌روز</h3>
+                        <p>سرفصل‌های آموزشی بر اساس آخرین فناوری‌ها و نیازهای بازار کار تنظیم شده‌اند.</p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+    <section class="related-links-section">
+        <div class="container">
+            <h2 class="section-title">شبکه دانش و مراجع مرتبط</h2>
+            <div class="links-grid">
+                <a href="https://faradars.org" target="_blank" class="link-card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-graduation-cap card-icon"></i>
+                    <h3>فرادرس</h3>
+                    <p>آموزش‌های تخصصی الکترونیک و برنامه‌نویسی به زبان فارسی</p>
+                    <span class="visit-btn" >مشاهده مرجع <i class="fas fa-external-link-alt"></i></span>
+                </a>
+
+                <a href="https://sisoog.com" target="_blank" class="link-card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-microchip card-icon"></i>
+                    <h3>سیسوگ</h3>
+                    <p>پایگاه دانش سخت‌افزار، اینترنت اشیا و میکروکنترلرها</p>
+                    <span class="visit-btn">مشاهده مرجع <i class="fas fa-external-link-alt"></i></span>
+                </a>
+
+                <a href="https://owasp.org" target="_blank" class="link-card">
+                    <div class="card-glow"></div>
+                    <i class="fas fa-user-shield card-icon"></i>
+                    <h3>OWASP</h3>
+                    <p>مرجع جهانی استانداردهای امنیت وب و تست نفوذ (مناسب DVWA)</p>
+                    <span class="visit-btn">مشاهده مرجع <i class="fas fa-external-link-alt"></i></span>
+                </a>
+
+                <a href="https://www.arduino.cc" target="_blank" class="link-card">
+                    <div class="card-glow"></div>
+                    <i class="fab fa-edge-legacy card-icon"></i>
+                    <h3>Arduino</h3>
+                    <p>مرجع اصلی کدنویسی و مستندات بردهای هوشمند</p>
+                    <span class="visit-btn">مشاهده مرجع <i class="fas fa-external-link-alt"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+        <footer class="footer">
+            <div class="container footer-content">
+                
+                <div class="footer-section">
+                    <h3>BitZone</h3>
+                    <p>سکوی پرتاب شما به دنیای برنامه‌نویسی</p>
+                  <div style="margin-top: 1rem; font-size: 1.5rem;">
+    <a href="https://www.youtube.com/@bitzonehub" title="کانال یوتیوب بیت‌زون" style="display: inline; margin-left: 1rem;"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://t.me/CodeMatrixx" title="کانال تلگرام" style="display: inline; margin-left: 1rem;"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://github.com/Farnaztr" title="گیت‌هاب توسعه‌دهنده" style="display: inline;"><i class="fa-brands fa-github"></i></a>
+</div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>مسیرهای اصلی</h4>
+                    <a href="#paths">فرانت‌اند</a>
+                    <a href="#paths">بک‌اند</a>
+                    <a href="#paths">هوش مصنوعی</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>منابع</h4>
+                    <a href="#videos">آموزش‌های ویدیویی</a>
+                    <a href="#community">تالار گفتگو</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>شرکت</h4>
+    <a href="about.html">درباره ما</a>
+                    <a href="#" onclick="openContactModal()">تماس با ما</a>
+                </div>
+
+    </div>
+    <div class="container footer-bottom">
+        <p>&copy; 2025 BitZone</p>
+    </div>
+
+    </footer>
+
+
+    <!-- Modal نتیجه -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content result-content">
+            <span class="close-modal" onclick="closeResultModal()">&times;</span>
+            <div class="result-header">
+                <i class="fa-solid fa-trophy result-icon gradient-text"></i>
+                <h2>نتیجه آزمون علاقه‌سنجی</h2>
+            </div>
+            <h3 id="resultTitle" class="gradient-text">توسعه دهنده فرانت‌اند</h3>
+            
+            <div class="result-stats">
+                <div class="result-stat">
+                    <div class="stat-value" id="matchPercent">80%</div>
+                    <div class="stat-label">میزان تطابق</div>
+                </div>
+                <div class="result-stat">
+                    <div class="stat-value" id="pathDuration">6 ماه</div>
+                    <div class="stat-label">مدت زمان تخمینی</div>
+                </div>
+            </div>
+            
+            <p id="resultDescription">شما استعداد طبیعی در طراحی و ساخت تجربیات کاربری دارید...</p>
+            
+            <div id="analysis-container" class="reveal" style="margin-bottom: 20px;"></div>
+
+            <div class="form-actions" style="justify-content: center; gap: 10px;">
+    <a href="#videos"
+    class="form-btn primary"
+    onclick="closeResultModal()"
+    style="text-decoration:none;">
+    مشاهده سرفصل‌ها
+    </a>            <button class="form-btn secondary" onclick="closeResultModal()">بستن</button>
+            </div>
+        </div>
+    </div>
+
+
+
+        <div id="contactModal" class="modal">
+            <div class="modal-content contact-modal">
+                <span class="close-modal" onclick="closeContactModal()">&times;</span>
+                <div class="contact-header">
+                    <i class="fa-solid fa-headset result-icon gradient-text"></i>
+                    <h2>ارتباط با تیم پشتیبانی</h2>
+                    <p>سوالات، پیشنهادات یا مشکلات خود را از طریق فرم زیر با ما در میان بگذارید.</p>
+                </div>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">نام کامل</وروlabel>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ایمیل</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">موضوع</label>
+                        <input type="text" id="subject" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">متن پیام</label>
+                        <textarea id="message" class="form-textarea" rows="4" required></textarea>
+                    </div>
+                    <div class="form-actions" style="justify-content: flex-end;">
+                        <button type="submit" class="form-btn primary">ارسال پیام</button>
+                        <button type="button" class="form-btn secondary" onclick="closeContactModal()">انصراف</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    <div id="assessmentModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center;">
+        <div class="modal-content" style="background:#1a1b2e; padding:30px; border-radius:15px; width:90%; max-width:500px; border:1px solid #8b5cf6; position:relative;">
+            <span onclick="document.getElementById('assessmentModal').style.display='none'; document.body.style.overflow='auto'" style="position:absolute; top:10px; left:15px; cursor:pointer; color:#fff; font-size:24px;">&times;</span>
+            
+            <div id="progressContainer" style="margin-bottom:20px;">
+                <div style="background:#2d2d42; height:8px; border-radius:10px;">
+                    <div id="progressFill" style="background:#8b5cf6; height:100%; width:0%; border-radius:10px; transition:0.3s;"></div>
+                </div>
+                <span id="progressText" style="color:#aaa; font-size:12px; margin-top:5px; display:block;"></span>
+            </div>
+
+            <div id="questionContainer"></div>
+
+            <div style="margin-top:20px; display:flex; gap:10px;">
+                <button id="prevBtn" onclick="prevQuestion()" class="cta-btn secondary" style="padding:10px 20px; display:none;">قبلی</button>
+                <button id="nextBtn" onclick="nextQuestion()" class="cta-btn primary" style="padding:10px 20px;">بعدی</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; overflow-y: auto;">
+        <div class="modal-content" style="background:#1a1b2e; padding:25px; border-radius:15px; width:95%; max-width:500px; border:2px solid #8b5cf6; text-align:center; margin: 20px auto;">
+            
+            <h2 id="result-title" style="color:#8b5cf6; margin-bottom:10px; font-size: 1.5rem;"></h2>
+            
+            <div style="color:#fff; margin-bottom:15px; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">
+                تطابق: <span id="result-percent" style="color:#10b981; font-weight:bold;"></span> | 
+                زمان: <span id="result-duration" style="color:#f59e0b;"></span>
+            </div>
+
+            <div style="max-height: 300px; overflow-y: auto; text-align: right; padding-left: 5px;">
+                <p id="result-description" style="color:#eee; line-height:1.8; font-size: 0.95rem; margin-bottom: 15px;"></p>
+                <div id="analysis-container" style="border-top: 1px solid #2d2d42; "></div>
+            </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+        <button onclick="handleResultAction('#videos')" class="cta-btn primary" style="width: 100%; padding: 12px; cursor: pointer;">
+            مشاهده ویدیوهای پیشنهادی
+        </button>
+        <button onclick="closeResultModal()" style="background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 0.9rem; padding: 5px;">
+            بستن و بازگشت
+        </button>
+    </div>
+        </div>
+    </div>
+ <div id="contactModal" class="contact-overlay">
+    <div class="neo-contact-wrapper">
+        <button class="close-minimal" onclick="closeContactModal()">&times;</button>
+        <div class="neo-header">
+            <h2>Signal To <span>BitZone</span></h2>
+            <p>ارسال پیام به هسته مرکزی</p>
+        </div>
+        <form class="neo-form" onsubmit="event.preventDefault(); alert('پیام ارسال شد!'); closeContactModal();">
+            <div class="input-container">
+                <input type="text" required>
+                <label>نام شما</label>
+            </div>
+            <div class="input-container">
+                <input type="email" required>
+                <label>ایمیل</label>
+            </div>
+            <textarea placeholder="پیام شما..." rows="3" required style="width:100%; background:rgba(255,255,255,0.05); border:1px solid #444; color:white; border-radius:8px; padding:10px; margin-top:10px;"></textarea>
+            <button type="submit" class="neo-submit-btn" style="width:100%; margin-top:15px; padding:12px; background:#8b5cf6; border:none; color:white; border-radius:8px; cursor:pointer;">ارسال سیگنال</button>
+        </form>
+    </div>
+</div>
+<div id="surveyModal" class="bz-survey-overlay">
+    <div class="bz-survey-card">
+        <button class="bz-close-btn" onclick="toggleSurvey()">&times;</button>
+        
+        <div class="bz-header">
+            <h2>نظرسنجی <span>BitZone</span></h2>
+            <p>هسته مرکزی هوش مصنوعی و امنیت</p>
+        </div>
+
+        <form class="bz-form" onsubmit="event.preventDefault(); alert('سیگنال دریافت شد!'); toggleSurvey();">
+            
+            <div class="bz-row">
+                <div class="bz-field">
+                    <label>نام کاربری</label>
+                    <input type="text" placeholder="نام شما..." required>
+                </div>
+                <div class="bz-field">
+                    <label>ایمیل</label>
+                    <input type="email" placeholder="email@test.com" required>
+                </div>
+            </div>
+
+            <div class="bz-field">
+                <label>حوزه مورد علاقه (Target)</label>
+                <select>
+                    <option>اینترنت اشیا (IoT)</option>
+                    <option>هوش مصنوعی (AI)</option>
+                    <option>امنیت سایبری (Cyber Security)</option>
+                    <option>برنامه‌نویسی پایتون</option>
+                </select>
+            </div>
+
+            <div class="bz-field">
+                <label>سطح دانش فنی (Skill Level):</label>
+                <div class="bz-options">
+                    <label><input type="radio" name="lvl" checked> مبتدی</label>
+                    <label><input type="radio" name="lvl"> متوسط</label>
+                    <label><input type="radio" name="lvl"> حرفه‌ای</label>
+                    <label><input type="radio" name="lvl"> متخصص</label>
+                </div>
+            </div>
+
+            <div class="bz-field">
+                <label>سرویس‌های مورد نیاز (Checkboxes):</label>
+                <div class="bz-options">
+                    <label><input type="checkbox" checked> اخبار تکنولوژی</label>
+                    <label><input type="checkbox"> آموزش بردهای ESP</label>
+                    <label><input type="checkbox"> تست نفوذ</label>
+                </div>
+            </div>
+
+            <div class="bz-field">
+                <label>پیشنهادات</label>
+                <textarea rows="2" placeholder="پیام شما به هسته مرکزی..."></textarea>
+            </div>
+
+            <button type="submit" class="bz-submit-btn">ارسال اطلاعات</button>
+        </form>
+    </div>
+</div>
+
+<style>
+/* برای اینکه با بقیه سایت تداخل نکنه، همه کلاس‌ها رو با bz- شروع کردم */
+.bz-survey-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px); z-index: 100000; justify-content: center; align-items: center; padding: 15px;
+}
+
+.bz-survey-card {
+    background: #0b0b18; border: 1px solid #8b5cf6; width: 100%; max-width: 500px;
+    border-radius: 20px; padding: 30px; position: relative; direction: rtl; font-family: sans-serif;
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.bz-header { text-align: center; margin-bottom: 20px; }
+.bz-header h2 { color: white; margin: 0; font-size: 1.6rem; }
+.bz-header h2 span { color: #8b5cf6; }
+.bz-header p { color: #888; font-size: 0.8rem; margin-top: 5px; }
+
+.bz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.bz-field { margin-bottom: 15px; text-align: right; }
+.bz-field label { display: block; color: #ccc; font-size: 0.8rem; margin-bottom: 6px; }
+
+.bz-field input, .bz-field select, .bz-field textarea {
+    width: 100%; padding: 10px; background: #16162d; border: 1px solid #333;
+    border-radius: 8px; color: white; outline: none; font-size: 0.85rem;
+}
+
+.bz-field input:focus { border-color: #8b5cf6; }
+
+.bz-options { display: flex; flex-wrap: wrap; gap: 12px; color: #eee; font-size: 0.8rem; padding-top: 5px; }
+.bz-options label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+
+.bz-submit-btn {
+    width: 100%; padding: 12px; background: #8b5cf6; color: white; border: none;
+    border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+.bz-submit-btn:hover { background: #d946ef; transform: translateY(-2px); }
+
+.bz-close-btn {
+    position: absolute; top: 15px; left: 15px; background: none; border: none;
+    color: #666; font-size: 24px; cursor: pointer;
+}
+</style>
+
+<div id="surveyModal" class="contact-overlay" style="display: none; align-items: center; justify-content: center; z-index: 2000;">
+    <div class="contact-modal" style="max-width: 500px; width: 90%; background: rgba(20, 20, 35, 0.95); backdrop-filter: blur(20px); border: 1px solid var(--primary-purple); border-radius: 20px; padding: 30px; position: relative;">
+        <button onclick="toggleSurvey()" style="position: absolute; left: 20px; top: 20px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;">&times;</button>
+        
+        <h2 style="color: #fff; text-align: center; margin-bottom: 20px;">نظرسنجی BitZone</h2>
+        <p style="color: #bbb; text-align: center; font-size: 14px;">نظر شما به ما در بهبود کیفیت آموزش‌ها کمک می‌کند.</p>
+
+        <div id="surveyContent">
+            <label style="color: #fff; display: block; margin-top: 20px;">کیفیت آموزش‌ها چطور است؟</label>
+            <div style="display: flex; justify-content: space-around; margin: 15px 0;">
+                <button onclick="submitVote(1)" style="font-size: 25px; background: none; border: none; cursor: pointer;">😞</button>
+                <button onclick="submitVote(2)" style="font-size: 25px; background: none; border: none; cursor: pointer;">😐</button>
+                <button onclick="submitVote(3)" style="font-size: 25px; background: none; border: none; cursor: pointer;">😊</button>
+                <button onclick="submitVote(4)" style="font-size: 25px; background: none; border: none; cursor: pointer;">🔥</button>
+            </div>
+            
+            <textarea id="surveyComment" placeholder="پیشنهاد یا انتقادی دارید؟" style="width: 100%; height: 80px; background: rgba(255,255,255,0.05); border: 1px solid #444; border-radius: 10px; color: #fff; padding: 10px; margin-top: 15px;"></textarea>
+            
+            <button onclick="finishSurvey()" style="width: 100%; padding: 12px; margin-top: 20px; border-radius: 10px; border: none; background: var(--primary-purple); color: #fff; font-weight: bold; cursor: pointer;">ثبت نظر</button>
+        </div>
+    </div>
+</div>
+<audio id="bgMusic" loop>
+    <source src="images/lofi.mp3" type="audio/mpeg">
+    مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+</audio>
+
+<div class="music-player" onclick="toggleMusic()">
+    <div class="music-wave" id="wave">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <i id="musicIcon" class="fas fa-play"></i>
+</div>
+        <script src="script.js"></script>
+    </body>
+    </html>

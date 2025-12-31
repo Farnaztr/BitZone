@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>BitZone - مدیریت حساب کاربری</title>
+       <link rel="icon" type="image/png" href="images/bitzone.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { background: #05050a; color: white; font-family: Tahoma, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .profile-card { background: #1a1b2e; padding: 40px; border-radius: 24px; border: 1px solid #8b5cf6; width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        h2 { text-align: center; color: #8b5cf6; margin-bottom: 30px; }
+        .input-box { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: #ccc; }
+        input { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #2d2d42; background: #0f1021; color: white; box-sizing: border-box; transition: 0.3s; }
+        input:focus { border-color: #8b5cf6; outline: none; box-shadow: 0 0 10px rgba(139,92,246,0.3); }
+        .save-btn { width: 100%; padding: 14px; background: #8b5cf6; color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1rem; margin-top: 10px; transition: 0.3s; }
+        .save-btn:hover { background: #7c3aed; transform: translateY(-2px); }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #888; text-decoration: none; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <h2><i class="fas fa-user-gear"></i> تنظیمات پروفایل</h2>
+        
+        <div class="input-box">
+            <label>نام کاربری:</label>
+            <input type="text" id="edit-username" placeholder="نام کاربری جدید">
+        </div>
+
+        <hr style="border: 0.5px solid #2d2d42; margin: 25px 0;">
+
+        <div class="input-box">
+            <label>رمز عبور فعلی (برای تایید):</label>
+            <input type="password" id="old-password" placeholder="••••••••">
+        </div>
+
+        <div class="input-box">
+            <label>رمز عبور جدید:</label>
+            <input type="password" id="new-password" placeholder="فقط در صورت تغییر پر کنید">
+        </div>
+
+        <button class="save-btn" onclick="updateProfile()">ذخیره تغییرات نهایی</button>
+        
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-right"></i> بازگشت به پنل اصلی</a>
+    </div>
+
+    <script>
+        // لود کردن اطلاعات فعلی هنگام باز شدن صفحه
+        window.onload = function() {    
+            const currentUser = JSON.parse(localStorage.getItem('bitzone_user'));
+            if (currentUser) {
+                document.getElementById('edit-username').value = currentUser.username;
+            } else {
+                window.location.href = 'login.html';
+            }
+        };
+
+        function updateProfile() {
+            const newName = document.getElementById('edit-username').value;
+            const oldPassInput = document.getElementById('old-password').value;
+            const newPassInput = document.getElementById('new-password').value;
+            
+            let currentUser = JSON.parse(localStorage.getItem('bitzone_user'));
+            let allUsers = JSON.parse(localStorage.getItem('bitzone_users_list')) || [];
+
+            if (!oldPassInput) {
+                alert("لطفاً رمز عبور فعلی خود را برای تایید هویت وارد کنید.");
+                return;
+            }
+
+            // ۱. تایید رمز قدیمی
+            if (oldPassInput !== currentUser.password) {
+                alert("رمز عبور فعلی اشتباه است!");
+                return;
+            }
+
+            // ۲. پیدا کردن کاربر در دیتابیس (localStorage)
+            const userIndex = allUsers.findIndex(u => u.username === currentUser.username);
+            
+            if (userIndex !== -1) {
+                // اعمال تغییرات
+                if (newName) allUsers[userIndex].username = newName;
+                if (newPassInput) allUsers[userIndex].password = newPassInput;
+
+                // ذخیره در دیتابیس کلی و سشن فعلی
+                localStorage.setItem('bitzone_users_list', JSON.stringify(allUsers));
+                localStorage.setItem('bitzone_user', JSON.stringify(allUsers[userIndex]));
+                
+                alert("تغییرات با موفقیت اعمال شد. مجدداً هدایت می‌شوید...");
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>

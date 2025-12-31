@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گالری تصاویر - BitZone</title>   
+    <link rel="icon" type="image/png" href="images/bitzone.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* تم بنفش BitZone */
+        :root {
+            --primary-purple: #8b5cf6;
+            --primary-purple-light: #a78bfa;
+            --primary-purple-dark: #7c3aed;
+            --secondary-cyan: #00ffea;
+            --accent-pink: #ff00ff;
+            --dark-bg: #0f0a23;
+            --dark-card: #1a1b3a;
+            --border-color: #2d2b55;
+            --text-primary: #ffffff;
+            --text-secondary: #c4b5fd;
+            --neon-glow: 0 0 15px rgba(139, 92, 246, 0.5);
+            --neon-glow-strong: 0 0 25px rgba(139, 92, 246, 0.7);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ناوبری */
+        .gallery-nav {
+            background: rgba(15, 10, 35, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--primary-purple);
+            padding: 1.2rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--neon-glow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    .nav-icon-back {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--iot-cyan);
+        text-decoration: none;
+        border: 1px solid rgba(99, 36, 142, 0.3);
+        transition: all 0.3s ease;
+    }
+     .nav-icon-back:hover {
+        background: var(--iot-cyan);
+        color: #9950b8;
+        box-shadow: 0 0 15px var(--iot-cyan);
+    }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--primary-purple);
+            box-shadow: var(--neon-glow);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-cyan));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .back-btn {
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid var(--primary-purple);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background: rgba(139, 92, 246, 0.4);
+            transform: translateY(-2px);
+            box-shadow: var(--neon-glow);
+        }
+
+        /* هدر گالری */
+        .gallery-header {
+            max-width: 1200px;
+            margin: 3rem auto 2rem;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .gallery-title {
+            font-size: 3rem;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-cyan));
+             background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .gallery-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* فیلترها */
+        .filters-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+            padding: 0 2rem;
+            max-width: 1200px;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.8rem;
+            background: rgba(26, 27, 58, 0.8);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--primary-purple);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(45deg, var(--primary-purple), var(--primary-purple-light));
+            color: white;
+            border: none;
+            box-shadow: var(--neon-glow);
+        }
+
+        /* گالری تصاویر */
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            background: var(--dark-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            aspect-ratio: 4/3;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 10, 35, 0.9), transparent);
+            padding: 1.5rem 1rem;
+        }
+
+        .image-category {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-purple), var(--secondary-cyan));
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .image-title {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .image-description {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* لایت باکس اصلی - نمایش تصویر در ابعاد واقعی */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.3);
+            cursor: default;
+            transition: transform 0.2s ease;
+        }
+
+        /* کنترل‌های لایت باکس */
+        .lightbox-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 2001;
+        }
+
+        .lightbox-btn {
+            background: rgba(26, 27, 58, 0.9);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .lightbox-btn:hover {
+            background: var(--primary-purple);
+            transform: scale(1.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 2001;
+        }
+
+        .nav-btn {
+            background: rgba(26, 27, 58, 0.9);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.3rem;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-purple);
+            transform: scale(1.1);
+        }
+
+        /* اطلاعات تصویر */
+        .image-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 10, 35, 0.9);
+            padding: 1rem 1.5rem;
+            text-align: center;
+        }
+
+        .info-title {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .info-details {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* فوتر */
+        .gallery-footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 2.2rem;
+            }
+            
+            .gallery-nav {
+                padding: 1rem;
+            }
+            
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .filters-container {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .lightbox-nav {
+                padding: 0 10px;
+            }
+            
+            .nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .gallery-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ناوبری -->
+    <nav class="gallery-nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">
+                <img src="images/bitzone.png" alt="BitZone Logo" class="logo">
+                <span class="logo-text">BitZone</span>
+            </a>
+            
+               <a href="index.html" class="nav-icon-back"><i class="fas fa-home"></i></a>
+
+        </div>
+    </nav>
+
+    <!-- هدر -->
+    <header class="gallery-header">
+        <h1 class="gallery-title">گالری تصاویر </h1>
+        <p class="gallery-subtitle">
+            مجموعه‌ای از تصاویر با کیفیت بالا از پروژه‌های عملی.
+            روی هر تصویر کلیک کنید تا در ابعاد واقعی مشاهده شود.
+        </p>
+    </header>
+
+    <!-- فیلترها -->
+    <div class="filters-container">
+        <button class="filter-btn active" data-filter="all">همه تصاویر</button>
+        <button class="filter-btn" data-filter="iot">اینترنت اشیا</button>
+        <button class="filter-btn" data-filter="ai">هوش مصنوعی</button>
+        <button class="filter-btn" data-filter="cyber">امنیت سایبری</button>
+    </div>
+
+  <div class="gallery-container">
+    <div class="gallery-grid">
+        <div class="gallery-item" data-category="iot" data-id="1" title="مشاهده جزئیات پروژه خانه هوشمند">
+            <div class="image-wrapper">
+                <img src="images/iot.png" alt="سیستم مانیتورینگ خانه هوشمند مبتنی بر اینترنت اشیا Bitzone" class="gallery-image">
+            </div>
+            <div class="image-overlay">
+                <span class="image-category">اینترنت اشیا</span>
+                <h3 class="image-title">خانه هوشمند IoT</h3>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="iot" data-id="2" title="مشاهده داشبورد مدیریتی IoT">
+            <div class="image-wrapper">
+                <img src="images/Gemini_Generated_Image_irg8f1irg8f1irg8.png" alt="داشبورد پایش هوشمند و تحلیل داده‌های سنسور" class="gallery-image">
+            </div>
+            <div class="image-overlay">
+                <span class="image-category">اینترنت اشیا</span>
+                <h3 class="image-title">داشبورد پایش هوشمند</h3>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="ai" data-id="3" title="مشاهده مفاهیم یادگیری ماشین">
+            <div class="image-wrapper">
+                <img src="images/ai intelligence.jpg" alt="تجسم گرافیکی شبکه‌های عصبی و هوش مصنوعی" class="gallery-image">
+            </div>
+            <div class="image-overlay">
+                <span class="image-category">هوش مصنوعی</span>
+                <h3 class="image-title">آموزش هوش مصنوعی</h3>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-category="ai" data-id="4" title="مشاهده زیرساخت پردازش داده">
+            <div class="image-wrapper">
+                <img src="images/Gemini_Generated_Image_cc1c8acc1c8acc1c.png" alt="پردازش داده‌های بزرگ و محاسبات ابری هوش مصنوعی" class="gallery-image">
+            </div>
+            <div class="image-overlay">
+                <span class="image-category">هوش مصنوعی</span>
+                <h3 class="image-title">پردازش داده‌های بزرگ</h3>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="cyber" data-id="5" title="مشاهده محیط تست نفوذ">
+            <div class="image-wrapper">
+                <img src="images/cyber.png" alt="امنیت شبکه و عملیات تست نفوذ در آزمایشگاه سایبری" class="gallery-image">
+            </div>
+            <div class="image-overlay">
+                <span class="image-category">امنیت سایبری</span>
+                <h3 class="image-title">آزمایشگاه تست نفوذ</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- لایت باکس -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-controls">
+            <button class="lightbox-btn" onclick="closeLightbox()" title="بستن (ESC)">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="lightbox-nav">
+            <button class="nav-btn" onclick="prevImage(event)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="nav-btn" onclick="nextImage(event)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="تصویر بزرگ">
+            <div class="image-info">
+                <h3 id="info-title" class="info-title"></h3>
+                <div id="info-details" class="info-details"></div>
+            </div>
+        </div>
+    </div>
+    <footer class="gallery-footer">
+        <p class="footer-text">© 2025 BitZone - گالری تصاویر تخصصی</p>
+    </footer>
+
+    <script>
+   
+   const images = {
+    1: {
+        title: "خانه هوشمند IoT",
+        category: "اینترنت اشیا",
+        description: "سیستم کنترل هوشمند خانه با بردهای ESP32 و سنسورها",
+        image: "images/iot.png",
+        alt: "سیستم مانیتورینگ خانه هوشمند مبتنی بر اینترنت اشیا Bitzone"
+    },
+    2: {
+        title: "داشبورد پایش هوشمند",
+        category: "اینترنت اشیا",
+        description: "کنترل و تحلیل داده‌های محیطی و سلامت در لحظه",
+        image: "images/Gemini_Generated_Image_irg8f1irg8f1irg8.png",
+        alt: "داشبورد پایش هوشمند و تحلیل داده‌های سنسور"
+    },
+    3: {
+        title: "آموزش هوش مصنوعی",
+        category: "هوش مصنوعی",
+        description: "تحلیل داده با یادگیری ماشین و تکنیک‌های هوش مصنوعی",
+        image: "images/ai intelligence.jpg",
+        alt: "تجسم گرافیکی شبکه‌های عصبی و هوش مصنوعی"
+    },
+    4: {
+        title: "پردازش داده‌های بزرگ",
+        category: "هوش مصنوعی",
+        description: "زیرساخت‌های مقیاس‌پذیر برای پردازش کلان داده‌ها",
+        image: "images/Gemini_Generated_Image_cc1c8acc1c8acc1c.png",
+        alt: "پردازش داده‌های بزرگ و محاسبات ابری هوش مصنوعی"
+    },
+    5: {
+        title: "آزمایشگاه تست نفوذ",
+        category: "امنیت سایبری",
+        description: "محیط تخصصی برای تست امنیتی و ارزیابی آسیب‌پذیری‌ها",
+        image: "images/cyber.png",
+        alt: "امنیت شبکه و عملیات تست نفوذ در آزمایشگاه سایبری"
+    }
+};
+
+        let currentImageId = null;
+        let filteredImageIds = [];
+
+        // باز کردن تصویر در لایت‌باکس
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const imageId = parseInt(this.dataset.id);
+                openLightbox(imageId);
+            });
+        });
+
+        // باز کردن لایت‌باکس
+        function openLightbox(imageId) {
+            const image = images[imageId];
+            if (!image) return;
+            
+            currentImageId = imageId;
+            
+            const lightboxImage = document.getElementById('lightbox-image');
+            lightboxImage.src = image.image;
+            lightboxImage.alt = image.alt;
+            
+            // بارگذاری تصویر و سپس نمایش
+            lightboxImage.onload = function() {
+                document.getElementById('info-title').textContent = image.title;
+                document.getElementById('info-details').innerHTML = `
+                    <div><strong>دسته‌بندی:</strong> ${image.category}</div>
+                    <div><strong>توضیحات:</strong> ${image.description}</div>
+                `;
+                
+                document.getElementById('lightbox').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                updateFilteredImages();
+            };
+            
+            // اگر تصویر از قبل لود شده باشد
+            if (lightboxImage.complete) {
+                lightboxImage.onload();
+            }
+        }
+
+        // بستن لایت‌باکس
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // تصویر بعدی
+        function nextImage(event) {
+            event.stopPropagation();
+            if (filteredImageIds.length === 0) return;
+            
+            let currentIndex = filteredImageIds.indexOf(currentImageId);
+            let nextIndex = (currentIndex + 1) % filteredImageIds.length;
+            
+            openLightbox(filteredImageIds[nextIndex]);
+        }
+
+        // تصویر قبلی
+        function prevImage(event) {
+            event.stopPropagation();
+            if (filteredImageIds.length === 0) return;
+            
+            let currentIndex = filteredImageIds.indexOf(currentImageId);
+            let prevIndex = (currentIndex - 1 + filteredImageIds.length) % filteredImageIds.length;
+            
+            openLightbox(filteredImageIds[prevIndex]);
+        }
+
+        // تابع فیلتر تصاویر
+        function filterImages(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-filter="${filter}"]`).classList.add('active');
+            
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                const category = item.dataset.category;
+                
+                if (filter === 'all' || filter === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            updateFilteredImages();
+        }
+
+        // به‌روزرسانی لیست تصاویر فیلتر شده
+        function updateFilteredImages() {
+            filteredImageIds = [];
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+            
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                const category = item.dataset.category;
+                const imageId = parseInt(item.dataset.id);
+                
+                if (activeFilter === 'all' || activeFilter === category) {
+                    if (item.style.display !== 'none') {
+                        filteredImageIds.push(imageId);
+                    }
+                }
+            });
+            
+            filteredImageIds.sort((a, b) => a - b);
+        }
+
+        // کنترل با کیبورد
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    prevImage({stopPropagation: () => {}});
+                } else if (e.key === 'ArrowLeft') {
+                    nextImage({stopPropagation: () => {}});
+                }
+            }
+        });
+
+        // لود اولیه
+        document.addEventListener('DOMContentLoaded', function() {
+            filterImages('all');
+            
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    filterImages(filter);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

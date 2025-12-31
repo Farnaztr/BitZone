@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دوره حرفه‌ای پایتون برای AI/ML | PyMaster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset و تنظیمات کلی */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #f0f0f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* نوار ناوبری */
+        .navbar {
+            background: rgba(15, 32, 39, 0.95);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #00d4ff;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: 50px;
+            margin-left: 15px;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #00d4ff;
+            color: #0f2027;
+            transform: translateY(-3px);
+        }
+
+        .home-link {
+            background: linear-gradient(45deg, #2c5d6a, #262f2e);
+            padding: 0.7rem 1.5rem !important;
+        }
+
+        /* هدر */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: radial-gradient(circle at center, rgba(44, 83, 100, 0.7), rgba(15, 32, 39, 0.9));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="30" y="60" font-family="monospace" font-size="14" fill="rgba(0,212,255,0.1)">import</text></svg>');
+            opacity: 0.3;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #00d4ff, #0083b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #b0e0e6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00d4ff, #0083b0);
+            color: #0f2027;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.6);
+        }
+
+        /* بخش‌های اصلی */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00d4ff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #0083b0);
+            border-radius: 2px;
+        }
+
+        /* کارت‌ها */
+        .modules-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .module-card {
+            background: rgba(25, 50, 63, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00d4ff, #0083b0);
+        }
+
+        .module-icon {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .module-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #f0f0f0;
+        }
+
+        .module-card p {
+            color: #b0e0e6;
+            margin-bottom: 1.5rem;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .code-block code {
+            color: #d4d4d4;
+            line-height: 1.5;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+        .function {
+            color: #dcdcaa;
+        }
+        .string {
+            color: #ce9178;
+        }
+        .comment {
+            color: #6a9955;
+        }
+
+        /* گالری تصاویر */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .img-caption {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: rgba(15, 32, 39, 0.9);
+            color: #f0f0f0;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .img-caption {
+            transform: translateY(0);
+        }
+
+        /* فوتر */
+        .footer {
+            background: rgba(15, 32, 39, 0.95);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 2px solid #00d4ff;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #00d4ff, #0083b0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: #f0f0f0;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #00d4ff;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #b0e0e6;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+            
+            .modules-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- نوار ناوبری -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="#home">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/python.svg" alt="لوگوی پایتون - مار پایتون به عنوان نماد برنامه نویسی پایتون" class="logo" title="لوگوی پایتون">
+            </a>
+            <h2 style="color: #00d4ff;">PyMaster</h2>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#install">نصب و راه‌اندازی</a></li>
+            <li><a href="#modules">ماژول‌های آموزشی</a></li>
+                        <li><a href="index.html" class="home-link"><i class="fas fa-home"></i> بازگشت به خانه اصلی</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- هدر اصلی -->
+    <header class="hero" id="home">
+        <h1>دوره پایتون برای هوش مصنوعی و علوم داده</h1>
+        <p>یادگیری پایتون</p>
+    </header>
+
+    <!-- بخش نصب و راه‌اندازی -->
+    <section class="section" id="install">
+        <h2 class="section-title">نصب و راه‌اندازی جنگ‌افزارهای داده</h2>
+        
+        <div class="modules-container">
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3>نصب پایتون به روش حرفه‌ای</h3>
+                <p>نصب پایتون با استفاده از Miniconda و ایجاد محیط‌های مجزا برای هر پروژه</p>
+                
+                <div class="code-block">
+                    <code>
+                        <span class="comment"># دانلود Miniconda از سایت رسمی</span><br>
+                        <span class="comment"># ایجاد محیط مجزا برای پروژه‌های هوش مصنوعی</span><br>
+                        <span class="keyword">conda</span> create -n ai-ml <span class="function">python</span>=3.10<br>
+                        <span class="keyword">conda</span> activate ai-ml<br>
+                        <span class="comment"># نصب کتابخانه‌های پایه</span><br>
+                    </code>
+                </div>
+            </div>
+            
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>محیط‌های توسعه یکپارچه (IDE)</h3>
+                <p>معرفی بهترین IDEها برای توسعه پروژه‌های داده‌کاوی و هوش مصنوعی</p>
+                
+                <div class="code-block">
+                    <code>
+                        <span class="comment"># VS Code + افزونه‌های پایتون</span><br>
+                        <span class="comment"># پیکربندی محیط توسعه:</span><br>
+                        <span class="keyword">1.</span> نصب VS Code<br>
+                        <span class="keyword">2.</span> نصب Python Extension<br>
+                        <span class="keyword">3.</span> نصب Jupyter Extension<br>
+                        <span class="keyword">4.</span> تنظیم interpreter محیط مجزا<br>
+                        <span class="comment"># یا استفاده از PyCharm Professional</span>
+                    </code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش ماژول‌های آموزشی -->
+    <section class="section" id="modules">
+        <h2 class="section-title">ماژول‌های آموزشی جامع</h2>
+        
+        <div class="modules-container">
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>NumPy: قدرت محاسبات عددی</h3>
+                <p>آرایه‌های چندبعدی، عملیات برداری و محاسبات ماتریسی با سرعت باورنکردنی</p>
+                
+                <div class="code-block">
+                    <code>
+                        <span class="keyword">import</span> numpy <span class="keyword">as</span> np<br><br>
+                        <span class="comment"># ایجاد آرایه NumPy</span><br>
+                        arr = np.array([<span class="string">1, 2, 3, 4, 5</span>])<br>
+                        matrix = np.zeros((<span class="string">3, 3</span>))<br><br>
+                        <span class="comment"># عملیات برداری سریع</span><br>
+                        result = arr * <span class="string">2</span> + <span class="string">5</span><br>
+                        <span class="comment"># ضرب ماتریسی</span><br>
+                        dot_product = np.dot(matrix, matrix.T)
+                    </code>
+                </div>
+            </div>
+            
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-table"></i>
+                </div>
+                <h3>Pandas: غول مدیریت داده‌ها</h3>
+                <p>خواندن، پاکسازی، تبدیل و تحلیل داده‌های ساختاریافته با DataFrameها</p>
+                
+                <div class="code-block">
+                    <code>
+                        <span class="keyword">import</span> pandas <span class="keyword">as</span> pd<br><br>
+                        <span class="comment"># ایجاد DataFrame</span><br>
+                        data = {<span class="string">'نام'</span>: [<span class="string">'علی'</span>, <span class="string">'مریم'</span>, <span class="string">'رضا'</span>],<br>
+                                <span class="string">'سن'</span>: [<span class="string">25</span>, <span class="string">30</span>, <span class="string">35</span>],<br>
+                                <span class="string">'شهر'</span>: [<span class="string">'تهران'</span>, <span class="string">'اصفهان'</span>, <span class="string">'مشهد'</span>]}<br>
+                        df = pd.DataFrame(data)<br><br>
+                        <span class="comment"># فیلتر و گروه‌بندی</span><br>
+                        filtered = df[df[<span class="string">'سن'</span>] > <span class="string">28</span>]<br>
+                        grouped = df.groupby(<span class="string">'شهر'</span>).mean()
+                    </code>
+                </div>
+            </div>
+        
+            
+            <div class="module-card">
+                <div class="module-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>مبانی یادگیری ماشین با Scikit-Learn</h3>
+                <p>پیاده‌سازی مدل‌های پیش‌بینی و خوشه‌بندی با چند خط کد</p>
+                
+                <div class="code-block">
+                    <code>
+                        <span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split<br>
+                        <span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression<br>
+                        <span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error<br><br>
+                        <span class="comment"># تقسیم داده‌ها</span><br>
+                        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="string">0.2</span>)<br><br>
+                        <span class="comment"># آموزش مدل</span><br>
+                        model = LinearRegression()<br>
+                        model.fit(X_train, y_train)<br><br>
+                        <span class="comment"># پیش‌بینی و ارزیابی</span><br>
+                        predictions = model.predict(X_test)<br>
+                        mse = mean_squared_error(y_test, predictions)
+                    </code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <!-- فوتر -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">PyMaster AI</div>
+ 
+              <div class="social-links">
+               <a href="https://www.youtube.com/@bitzonehub" title="کانال یوتیوب بیت‌زون" style="display: inline; margin-left: 1rem;"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://t.me/CodeMatrixx" title="کانال تلگرام" style="display: inline; margin-left: 1rem;"><i class="fa-brands fa-telegram"></i></a>
+    <a href="https://github.com/Farnaztr" title="گیت‌هاب توسعه‌دهنده" style="display: inline;"><i class="fa-brands fa-github"></i></a>
+</div>
+            
+            
+            
+            <div class="copyright">
+                <p>© 2025 PyMaster AI. تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // اسکرول نرم برای لینک‌ها
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // افکت تایپ برای عنوان اصلی
+        const heroTitle = document.querySelector('.hero h1');
+        const originalText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                heroTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        // شروع تایپ وقتی صفحه لود شد
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 500);
+        });
+
+        // افکت ظاهر شدن کارت‌ها هنگام اسکرول
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // اعمال افکت روی کارت‌ها
+        document.querySelectorAll('.module-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+
+        // تغییر رنگ نوار ناوبری هنگام اسکرول
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 32, 39, 0.98)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+            } else {
+                navbar.style.background = 'rgba(15, 32, 39, 0.95)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+            }
+        });
+
+        // نمایش تاریخ و ساعت
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            const persianDate = now.toLocaleDateString('fa-IR', options);
+            
+            const dateTimeElement = document.createElement('div');
+            dateTimeElement.className = 'datetime';
+            dateTimeElement.innerHTML = `<p><i class="far fa-clock"></i> ${persianDate}</p>`;
+            
+            const existingDateTime = document.querySelector('.datetime');
+            if (existingDateTime) {
+                existingDateTime.remove();
+            }
+            
+            document.querySelector('.footer-content').appendChild(dateTimeElement);
+        }
+
+        // به روز رسانی تاریخ هر ثانیه
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
