@@ -1,0 +1,76 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+:root {
+    --yekan-font: 'iranyekan', 'IranYekan', 'Vazirmatn', sans-serif;
+}
+
+
+body, p, label {
+    font-family: var(--yekan-font);
+    font-weight: 500;
+}
+.analysis-card {
+    background: rgba(30, 10, 50, 0.6);
+    border: 1px solid #bc13fe;
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    margin-top: 20px;
+    line-height: 1.8;
+    box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s all ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2, .login-card h2 {
+    font-family: var(--yekan-font) !important;
+    font-weight: 500 !important; 
+    font-size: 50px !important;  
+    letter-spacing: -2.5px !important; 
+    line-height: 1.1 !important;
+    color: #ffffff !important;
+    text-align: center;
+    margin-bottom: 35px !important;
+    text-shadow: 0 10px 20px rgba(188, 19, 254, 0.5); 
+    display: block;
+}
+
+
+.submit-btn {
+    font-family: var(--yekan-font) !important;
+    font-weight: 900 !important;
+    font-size: 24px !important; 
+    padding: 18px !important;
+    border-radius: 15px !important;
+    background: linear-gradient(45deg, #7a09a8, #bc13fe) !important;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(188, 19, 254, 0.4);
+}
+
+input {
+    font-family: var(--yekan-font) !important;
+    font-weight: 700 !important;
+    font-size: 20px !important; 
+    padding: 15px !important;
+    border-radius: 12px !important;
+}
+
+
+#intro-text {
+    font-family: sans-serif;
+    font-weight: 900;
+    font-size: 8rem; 
+    letter-spacing: -4px !important;
+    color: #fff;
+    text-shadow: 0 0 30px #bc13fe;
+}

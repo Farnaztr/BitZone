@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروژه هوشمندسازی | BitZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="iot.css">
+          <link rel="icon" type="image/png" href="images/bitzone.png">
+</head>
+<body>
+    <div class="iot-glow-bg"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-right">
+                <div class="logo-wrapper">
+                    <i class="fas fa-microchip logo-icon"></i>
+                    <div class="logo">BitZone<span>.IoT</span></div>
+                </div>
+            </div>
+           <div class="nav-left">
+    <div class="theme-switch-wrapper">
+        <i class="fas fa-sun" style="color: #ecc94b;"></i>
+        <label class="theme-switch">
+            <input type="checkbox" id="checkbox">
+            <span class="slider"></span>
+        </label>
+        <i class="fas fa-moon" style="color: #a0aec0;"></i>
+    </div>
+    <a href="index.html" class="nav-icon-back"><i class="fas fa-home"></i></a>
+</div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="main-header">
+            <div class="iot-badge">Project #01</div>
+            <h1>کنترل روشنایی با موبایل (WiFi)</h1>
+        </header>
+
+        <section class="video-section">
+            <div class="video-frame">
+                <video id="iotVideo" controls poster="images/iot-poster.jpg" preload="metadata">
+                    <source src="images/IRCS.mp4" type="video/mp4">
+                    مرورگر شما از ویدیو پشتیبانی نمی‌کند.
+                </video>
+            </div>
+        </section>
+
+        <section class="content-tabs">
+            <div class="tab-header">
+                <button class="tab-btn active" onclick="openTab(event, 'details')"><i class="fas fa-tools"></i> جزئیات</button>
+                <button class="tab-btn" onclick="openTab(event, 'code')"><i class="fas fa-code"></i> کدها</button>
+                <button class="tab-btn" onclick="openTab(event, 'qa')"><i class="fas fa-comments"></i> گفتگو</button>
+                <button class="tab-btn" onclick="openTab(event, 'poll')"><i class="fas fa-star"></i> امتیاز</button>
+            </div>
+
+            <div class="tab-body">
+                <div class="tab-item active" id="details">
+                    <div class="components-grid">
+                        <div class="comp-card">NodeMCU ESP8266</div>
+                        <div class="comp-card">Relay Module</div>
+                        <div class="comp-card">Jumper Wires</div>
+                        <div class="comp-card">BreadBoard</div>
+                    </div>
+                </div>
+
+                <div class="tab-item" id="code">
+                    <div class="code-section-wrapper">
+                        <div class="github-card">
+                            <div class="github-header">
+                                <i class="fab fa-github github-icon"></i>
+                                <div class="github-info">
+                                    <h3>منابع پروژه</h3>
+                                    <p>Repository: iot-smart-switch-project</p>
+                                </div>
+                            </div>
+                            <div class="action-links" style="display: flex; gap: 10px;">
+                                <a href="https://github.com/Farnaztr/IoT-Remote-Control-Switch" target="_blank" class="github-link">گیت‌هاب</a>
+                                <a href="https://www.youtube.com/watch?v=w757_zSKAsI" target="_blank" class="youtube-link">
+                                    <i class="fab fa-youtube"></i> یوتیوب
+                                </a>
+                            </div>
+                        </div>
+ 
+                        <div class="code-preview-container">
+                            <h3>تکه کد راه‌اندازی (Preview)</h3>
+                            <div class="code-window">
+                                <pre id="projectCode">
+#include &lt;ESP8266WiFi.h&gt;
+void setup() {
+  Serial.begin(115200);
+  pinMode(relayPin, OUTPUT);
+}
+                                </pre>
+                                <div class="code-fade-overlay"></div>
+                            </div>
+                            <div class="code-footer-actions">
+                                <button class="copy-btn" onclick="copyCode()">
+                                    <i class="fas fa-copy"></i> کپی این بخش
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="qa" class="tab-item">
+                    <form id="qaForm" class="modern-qa-form">
+                        <input type="text" id="qaName" placeholder="نام شما" required>
+                        <textarea id="qaText" placeholder="سوال فنی شما..." rows="3" required></textarea>
+                        <button type="submit" class="qa-submit-btn">ارسال</button>
+                    </form>
+                    <div id="qaList" class="qa-messages-list"></div>
+                </div>
+
+                <div id="poll" class="tab-item">
+                    <div class="poll-container">
+                        <h3>به این پروژه امتیاز دهید</h3>
+                        <div class="star-rating">
+                            <input type="radio" name="star" id="star5" value="5"><label for="star5">★</label>
+                            <input type="radio" name="star" id="star4" value="4"><label for="star4">★</label>
+                            <input type="radio" name="star" id="star3" value="3"><label for="star3">★</label>
+                            <input type="radio" name="star" id="star2" value="2"><label for="star2">★</label>
+                            <input type="radio" name="star" id="star1" value="1"><label for="star1">★</label>
+                        </div>
+                        <button class="qa-submit-btn" onclick="submitPoll()">ثبت امتیاز نهایی</button>
+                        <div id="poll-msg" class="feedback-msg"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="iot.js"></script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+  
+  
+  :root {
+        --iot-cyan: #22d3ee;
+        --iot-purple: #8b5cf6;
+        --dark-bg: #020617;
+        --card-bg: rgba(15, 23, 42, 0.8);
+    }
+    :root {
+        /* حالت پیش‌فرض (Dark) */
+        --bg-color: #050505;
+        filter: drop-shadow(0 0 8px rgba(61, 84, 88, 0.5));
+        --text-color: #e2e8f0;
+        --nav-bg: #1a202c;
+    }
+/* --- Optimized Light Mode for IOT Theme --- */
+body.light-mode {
+    --bg-color: #f0f4f8;          /* آبی بسیار روشن و تمیز (Ice Blue) */
+    --card-bg: rgba(154, 218, 238, 0.8); /* سفید شیشه‌ای برای حس مدرن */
+    --text-color: #1e293b;        /* خاکستری تیره مایل به سرمه‌ای برای خوانایی بالا */
+    --nav-bg: #ffffff;            /* نوبار سفید یکدست */
+    --accent-color: #000000;      /* آبی تکنولوژی برای المان‌های فعال */
+}
+
+body.light-mode .github-card {
+    background: #ffffff; 
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); /* سایه نرم‌تر */
+    color: #1e293b;
+}
+
+/* اضافه کردن استایل مخصوص المان‌های IOT در حالت روشن */
+body.light-mode .status-online {
+    color: #10b981; /* سبز زمردی برای نمایش سنسورهای فعال */
+}
+    body {
+        background-color: var(--bg-color) !important;
+        color: var(--text-color) !important;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar { background-color: var(--nav-bg); }
+    .comp-card, .tab-body, .github-card { 
+        background-color: var(--card-bg) !important;
+        color: var(--text-color);
+    }
+
+    /* استایل سوئیچ (مطابق تصویر شما) */
+    .theme-switch-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .theme-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 26px;
+    }
+
+    .theme-switch input { opacity: 0; width: 0; height: 0; }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #2d3748;
+        transition: .4s;
+        border-radius: 34px;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    input:checked + .slider { background-color: #cbd5e0; }
+    input:checked + .slider:before { transform: translateX(24px); }
+    body {
+        background: var(--dark-bg);
+        color: white;
+        font-family: 'Tahoma', sans-serif;
+        margin: 0; direction: rtl;
+    }
+
+    .iot-glow-bg {
+        position: fixed; top: 0; width: 100%; height: 100%;
+        background: radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.05), transparent);
+        z-index: -1;
+    }
+
+    .navbar { border-bottom: 2px solid var(--iot-cyan); padding: 15px; backdrop-filter: blur(10px); }
+    .nav-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+
+    .iot-badge { background: var(--iot-cyan); color: #000; padding: 4px 12px; border-radius: 50px; display: inline-block; font-weight: bold; font-size: 0.8rem; margin-bottom: 10px; }
+
+    .container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
+    .main-header h1 { color: var(--iot-cyan); text-shadow: 0 0 15px rgba(34, 211, 238, 0.3); }
+
+    /* ثابت کردن اندازه ویدیو از همان لحظه اول */
+    .video-frame {
+        position: relative;
+        width: 100%;
+        /* ایجاد نسبت ابعاد 16:9 */
+        aspect-ratio: 16 / 9; 
+        background: #000; /* پس‌زمینه سیاه قبل از لود */
+        border-radius: 25px;
+        overflow: hidden;
+        border: 2px solid var(--js-yellow);
+        box-shadow: 0 0 30px rgba(250, 204, 21, 0.2);
+        
+        /* افکت لودینگ ملایم تا زمان آمدن ویدیو */
+        background-image: linear-gradient(90deg, #0f172a 25%, #1e293b 50%, #0f172a 75%);
+        background-size: 200% 100%;
+        animation: loading-shimmer 2s infinite;
+    }
+
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* پر کردن کامل کادر */
+        display: block;
+    }
+
+    @keyframes loading-shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+    .content-tabs { background: var(--card-bg); margin-top: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+    .tab-header { display: flex; background: #000; }
+    .tab-btn { flex: 1; padding: 15px; border: none; background: none; color: #64748b; cursor: pointer; font-weight: bold; transition: 0.3s; }
+    .tab-btn.active { color: var(--iot-cyan); background: rgba(34, 211, 238, 0.1); border-bottom: 3px solid var(--iot-cyan); }
+
+    .tab-body { padding: 30px; }
+    .tab-item { display: none; animation: fadeIn 0.4s; }
+    .tab-item.active { display: block; }
+
+    .components-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px; }
+    .comp-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid rgba(34, 211, 238, 0.2); }
+
+    .code-block { background: #000; padding: 20px; border-radius: 10px; direction: ltr; overflow-x: auto; color: #10b981; border: 1px solid #1e293b; }
+
+    .star-rating { display: flex; flex-direction: row-reverse; justify-content: center; font-size: 3rem; gap: 10px; }
+    .star-rating input { display: none; }
+    .star-rating label { color: #1e293b; cursor: pointer; transition: 0.3s; }
+    .star-rating input:checked ~ label, .star-rating label:hover ~ label, .star-rating label:hover { color: #facc15; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    /* تنظیمات لوگو و آیکون کنار آن */
+    .logo-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo-icon {
+        font-size: 1.8rem;
+        color: var(--iot-cyan);
+        filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.5));
+    }
+
+    /* استایل جدید دکمه بازگشت (آیکونیک) */
+    .nav-icon-back {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--iot-cyan);
+        text-decoration: none;
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .nav-icon-back:hover {
+        background: var(--iot-cyan);
+        color: #000;
+        box-shadow: 0 0 15px var(--iot-cyan);
+    }
+
+    /* اصلاح کامل بخش پرسش و پاسخ */
+    .modern-qa-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .input-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    .youtube-link {
+        background: #ff0000;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+    /* استایل کلی ظرف سوئیچ */
+    .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .theme-switch-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #a0aec0; /* رنگ آیکون‌ها */
+    }
+
+    .theme-switch-wrapper i {
+        font-size: 14px;
+    }
+
+    /* ساختار اصلی سوئیچ */
+    .theme-switch {
+        display: inline-block;
+        height: 24px;
+        position: relative;
+        width: 48px;
+    }
+
+    .theme-switch input {
+        display: none;
+    }
+
+    /* اسلایدر (پس‌زمینه سوئیچ) */
+    .slider {
+        background-color: #2d3748; /* رنگ تیره شبیه عکس */
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: .4s;
+    }
+
+    /* دایره متحرک سفید */
+    .slider:before {
+        background-color: #fff;
+        bottom: 3px;
+        content: "";
+        height: 18px;
+        left: 4px;
+        position: absolute;
+        transition: .4s;
+        width: 18px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    /* استایل گرد شدن */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+    /* حرکت دایره هنگام کلیک (حالت فعال) */
+    input:checked + .slider {
+        background-color: #4a5568;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(22px);
+    }
+    .youtube-link:hover {
+        background: #cc0000;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+    }
+    .input-group i {
+        position: absolute;
+        right: 15px;
+        color: var(--iot-cyan);
+        opacity: 0.7;
+    }
+
+    .input-group input, .input-group textarea {
+        width: 100%;
+        padding: 12px 45px 12px 15px !important; /* فاصله از راست برای آیکون */
+        background: rgba(15, 23, 42, 0.8) !important;
+        border: 1px solid #334155 !important;
+        border-radius: 10px !important;
+        color: white !important;
+        font-family: 'Tahoma', sans-serif;
+    }
+
+    .qa-submit-btn {
+        background: linear-gradient(90deg, var(--iot-cyan), var(--iot-purple));
+        color: #000;
+        font-weight: bold;
+        border: none;
+        padding: 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s;
+    }
+
+    .qa-submit-btn:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.2);
+    }
+
+    .code-container { position: relative; }
+    .copy-btn {
+        margin-top: 10px;
+        background: var(--iot-cyan);
+        color: #000;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .feedback-msg {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 8px;
+        display: none;
+        text-align: center;
+
+    }
+    /* استایل کارت گیت‌هاب */
+    .github-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.3s;
+    }
+    /* ظرف اصلی کد */
+    .code-window {
+        position: relative;
+        background: #010409;
+        border-radius: 12px;
+        border: 1px solid #30363d;
+        overflow: hidden;
+        max-height: 250px; /* محدود کردن ارتفاع برای ایجاد حس ناتمام بودن */
+    }
+
+    pre#projectCode {
+        padding: 20px;
+        margin: 0;
+        color: #7ee787; /* رنگ سبز کد */
+        font-family: 'Consolas', monospace;
+        line-height: 1.6;
+        direction: ltr;
+    }
+
+    /* افکت محو شدن انتهای کد */
+    .code-fade-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background: linear-gradient(to bottom, transparent, #010409);
+        pointer-events: none;
+    }
+
+    /* دکمه‌های زیر کد */
+    .code-footer-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .view-more-github {
+        color: var(--iot-cyan);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.3s;
+    }
+        
+    .view-more-github:hover {
+        text-shadow: 0 0 8px var(--iot-cyan);
+        transform: translateX(-5px);
+    }
+    .github-card:hover {
+        border-color: var(--iot-cyan);
+        background: rgba(34, 211, 238, 0.05);
+    }
+
+    .github-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .github-icon {
+        font-size: 2.5rem;
+        color: white;
+    }
+
+    .github-info h3 {
+        margin: 0;
+        color: var(--iot-cyan);
+        font-size: 1.1rem;
+    }
+
+    .github-info p {
+        margin: 5px 0 0 0;
+        font-size: 0.85rem;
+        color: #94a3b8;
+    }
+
+    .github-link {
+        background: white;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    .github-link:hover {
+        background: var(--iot-cyan);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(34, 211, 238, 0.3);
+    }
+
+    /* ریسپانسیو برای موبایل */
+    @media (max-width: 600px) {
+        .github-card { flex-direction: column; gap: 20px; text-align: center; }
+        .github-header { flex-direction: column; }
+    }
+    .msg-success { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }
+    .msg-error { background: rgba(244, 63, 94, 0.2); color: #f43f5e; border: 1px solid #f43f5e; }
+    .qa-messages-list {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
