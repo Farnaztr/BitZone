@@ -59,7 +59,7 @@
             z-index: -1;
         }
 
-        /* Header */
+        
         .header {
             background: rgba(5, 5, 5, 0.9);
             border-bottom: 1px solid var(--hack-green);
@@ -140,7 +140,7 @@
             animation: blink 0.8s infinite;
         }
 
-        /* Main Container */
+        
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -150,7 +150,7 @@
             gap: 20px;
         }
 
-        /* Tab System */
+        
         .tab-system {
             background: var(--hack-card);
             border: 1px solid var(--hack-border);
@@ -220,7 +220,7 @@
             display: block;
         }
 
-        /* Security Dashboard Tab */
+        
         .security-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -308,7 +308,7 @@
             line-height: 1.5;
         }
 
-        /* Threat Monitoring Tab */
+        
         .threat-list {
             margin-top: 20px;
         }
@@ -375,7 +375,7 @@
             white-space: nowrap;
         }
 
-        /* Code Terminal Tab */
+        
         .terminal-window {
             background: #000;
             border: 1px solid var(--hack-border);
@@ -453,7 +453,7 @@
             margin-top: 5px;
         }
 
-        /* Q&A Tab */
+        
         .qa-container {
             margin-top: 20px;
         }
@@ -555,48 +555,7 @@
             line-height: 1.6;
             font-size: 14px;
         }
-/* دکمه بازگشت به خانه */
-.home-btn-container {
-    margin-left: 20px;
-}
 
-.home-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(0, 255, 65, 0.1);
-    border: 1px solid var(--hack-green);
-    color: var(--hack-green);
-    padding: 8px 15px;
-    text-decoration: none;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-    border-radius: 0;
-    text-transform: uppercase;
-}
-
-.home-btn:hover {
-    background: rgba(0, 255, 65, 0.2);
-    box-shadow: var(--neon-glow);
-    transform: translateY(-2px);
-}
-
-.home-btn i {
-    font-size: 16px;
-}
-
-.home-text {
-    display: none;
-}
-
-@media (min-width: 768px) {
-    .home-text {
-        display: inline;
-    }
-}/* دکمه بازگشت به خانه */
 .home-btn-container {
     margin-left: 20px;
 }
@@ -638,7 +597,48 @@
         display: inline;
     }
 }
-        /* Sidebar */
+.home-btn-container {
+    margin-left: 20px;
+}
+
+.home-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid var(--hack-green);
+    color: var(--hack-green);
+    padding: 8px 15px;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    border-radius: 0;
+    text-transform: uppercase;
+}
+
+.home-btn:hover {
+    background: rgba(0, 255, 65, 0.2);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-2px);
+}
+
+.home-btn i {
+    font-size: 16px;
+}
+
+.home-text {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .home-text {
+        display: inline;
+    }
+}
+        
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -666,7 +666,7 @@
             font-size: 18px;
         }
 
-        /* System Logs */
+        
         .log-list {
             max-height: 250px;
             overflow-y: auto;
@@ -707,7 +707,7 @@
             color: var(--danger-red);
         }
 
-        /* Quick Actions */
+        
         .actions-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -740,7 +740,7 @@
             font-size: 20px;
         }
 
-        /* Rating Widget */
+        
         .rating-container {
             text-align: center;
         }
@@ -789,7 +789,7 @@
             border: 1px solid var(--danger-red);
         }
 
-        /* Footer */
+        
         .footer {
             background: rgba(5, 5, 5, 0.9);
             border-top: 1px solid var(--hack-border);
@@ -817,7 +817,7 @@
             color: var(--hack-green);
         }
 
-        /* Animations */
+        
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
@@ -838,7 +838,7 @@
             100% { transform: translateY(100vh); }
         }
 
-        /* Scanline effect */
+        
         .scanline {
             position: fixed;
             top: 0;
@@ -851,7 +851,7 @@
             pointer-events: none;
         }
 
-        /* Responsive */
+        
         @media (max-width: 992px) {
             .container {
                 grid-template-columns: 1fr;
@@ -892,7 +892,7 @@
             }
         }
 
-        /* Scrollbar */
+        
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -1260,35 +1260,35 @@
     </footer>
 
     <script>
-        // Tab Management
+
         function openTab(evt, tabName) {
             let i, tabcontent, tablinks;
             
-            // Hide all tab content
+
             tabcontent = document.getElementsByClassName("tab-item");
             for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
                 tabcontent[i].classList.remove("active");
             }
             
-            // Remove active class from all tab buttons
+
             tablinks = document.getElementsByClassName("tab-btn");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("active");
             }
             
-            // Show the current tab and add active class
+
             document.getElementById(tabName).style.display = "block";
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
         
-        // Set default tab
+
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("dashboard").style.display = "block";
         });
         
-        // Q&A Form Submission
+
         document.getElementById('qaForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1319,11 +1319,11 @@
             list.prepend(item);
             document.getElementById('qaForm').reset();
             
-            // Show confirmation
+
             showNotification("سوال شما با موفقیت ارسال شد!", "success");
         });
         
-        // Rating System
+
         function submitRating() {
             const stars = document.querySelector('input[name="star"]:checked');
             const msgBox = document.getElementById('ratingMessage');
@@ -1333,7 +1333,7 @@
                 msgBox.className = "feedback-msg msg-success";
                 msgBox.style.display = "block";
                 
-                // Reset stars after 3 seconds
+
                 setTimeout(() => {
                     document.querySelectorAll('input[name="star"]').forEach(star => {
                         star.checked = false;
@@ -1351,7 +1351,7 @@
             }
         }
         
-        // Terminal Functions
+
         function clearTerminal() {
             document.getElementById('terminalContent').innerHTML = `
                 <div class="terminal-line">
@@ -1383,7 +1383,7 @@
             terminal.appendChild(newLine);
             terminal.appendChild(output);
             
-            // Scroll to bottom
+
             terminal.scrollTop = terminal.scrollHeight;
             
             showNotification("اسکن امنیتی شروع شد...", "info");
@@ -1396,15 +1396,15 @@
             });
         }
         
-        // Quick Actions Functions
+
         function runQuickScan() {
             showNotification("اسکن سریع در حال اجرا است...", "info");
             
-            // Simulate scan
+
             setTimeout(() => {
                 showNotification("اسکن کامل شد. هیچ تهدید جدی یافت نشد.", "success");
                 
-                // Add to logs
+
                 const logList = document.querySelector('.log-list');
                 const newLog = document.createElement('div');
                 newLog.className = "log-item";
@@ -1430,7 +1430,7 @@
             setTimeout(() => {
                 showNotification("فایروال با موفقیت به‌روزرسانی شد.", "success");
                 
-                // Update status
+
                 const statusValue = document.querySelectorAll('.status-value')[0];
                 statusValue.textContent = "UPDATING";
                 statusValue.className = "status-value warning";
@@ -1455,9 +1455,9 @@
             showNotification("لاگ‌های سیستم بارگیری شدند.", "info");
         }
         
-        // Notification System
+
         function showNotification(message, type) {
-            // Create notification element
+
             const notification = document.createElement('div');
             notification.textContent = message;
             notification.style.cssText = `
@@ -1477,7 +1477,7 @@
             
             document.body.appendChild(notification);
             
-            // Remove after 3 seconds
+
             setTimeout(() => {
                 notification.style.animation = 'fadeIn 0.3s reverse';
                 setTimeout(() => {
@@ -1486,7 +1486,7 @@
             }, 3000);
         }
         
-        // Auto-update logs every 30 seconds
+
         setInterval(() => {
             const logTypes = ["SEC", "WARN", "THR"];
             const logMessages = [
@@ -1522,7 +1522,7 @@
             logList.prepend(newLog);
         }, 30000);
         
-        // Simulate threat updates
+
         setInterval(() => {
             const threatValues = ["SECURE", "MEDIUM", "HIGH"];
             const randomValue = threatValues[Math.floor(Math.random() * threatValues.length)];

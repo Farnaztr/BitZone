@@ -1,12 +1,10 @@
-
-/* ۱. فراخوانی فونت‌های لازم */
 @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
 
 :root {
     --yekan-font: 'iranyekan', 'IranYekan', 'Vazirmatn', sans-serif;
 }
 
-/* ۲. بدنه سایت: خوانا و حرفه‌ای */
+
 body, p, label {
     font-family: var(--yekan-font);
     font-weight: 500;
@@ -32,25 +30,25 @@ body, p, label {
     opacity: 1;
     transform: translateY(0);
 }
-/* ۳. تیترهای غول‌آسا، فوق ضخیم و فشرده (دقیقا همان چیزی که می‌خواهی) */
+
 h2, .login-card h2 {
     font-family: var(--yekan-font) !important;
-    font-weight: 500 !important; /* فوق بولد (Black) */
-    font-size: 50px !important;  /* سایز بزرگ و با ابهت */
-    letter-spacing: -2.5px !important; /* فشرده‌سازی حروف برای جذابیت بیشتر */
+    font-weight: 500 !important; 
+    font-size: 50px !important;  
+    letter-spacing: -2.5px !important; 
     line-height: 1.1 !important;
     color: #ffffff !important;
     text-align: center;
     margin-bottom: 35px !important;
-    text-shadow: 0 10px 20px rgba(188, 19, 254, 0.5); /* درخشش نئونی زیر متن بولد */
+    text-shadow: 0 10px 20px rgba(188, 19, 254, 0.5); 
     display: block;
 }
 
-/* ۴. دکمه ورود: بزرگ و کلفت برای کلیک‌خور بهتر */
+
 .submit-btn {
     font-family: var(--yekan-font) !important;
     font-weight: 900 !important;
-    font-size: 24px !important; /* دکمه هم بزرگ و درشت شد */
+    font-size: 24px !important; 
     padding: 18px !important;
     border-radius: 15px !important;
     background: linear-gradient(45deg, #7a09a8, #bc13fe) !important;
@@ -58,20 +56,20 @@ h2, .login-card h2 {
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(188, 19, 254, 0.4);
 }
-/* ۵. فیلدهای ورودی: درشت و ضخیم */
+
 input {
     font-family: var(--yekan-font) !important;
     font-weight: 700 !important;
-    font-size: 20px !important; /* متن تایپ شده درشت دیده می‌شود */
+    font-size: 20px !important; 
     padding: 15px !important;
     border-radius: 12px !important;
 }
-/* ۶. بخش BITZONE (انگلیسی غول‌آسا) */
+
 
 #intro-text {
     font-family: sans-serif;
     font-weight: 900;
-    font-size: 8rem; /* فوق بزرگ */
+    font-size: 8rem; 
     letter-spacing: -4px !important;
     color: #fff;
     text-shadow: 0 0 30px #bc13fe;

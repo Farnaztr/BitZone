@@ -92,12 +92,12 @@ const resultMap = {
         reason: "تمرکز روی یادگیری ماشین و تحلیل داده."
     }
 };
-// --- تابع باز کردن کوییز ---
+
 function openAssessmentModal() {
     const modal = document.getElementById('assessmentModal');
     if (modal) {
         modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // قفل کردن اسکرول صفحه
+        document.body.style.overflow = 'hidden'; 
         currentQuestion = 0;
         selectedOptions = [];
         showQuestion();
@@ -105,7 +105,7 @@ function openAssessmentModal() {
 }
 function openContactModal(event) {
     if (event) event.preventDefault();
-    // پیدا کردن تمام مودال‌های هم‌نام و حذف تداخل
+    
     const modal = document.querySelector('.contact-overlay');
     if (modal) {
         modal.classList.add('active');
@@ -122,13 +122,13 @@ function closeContactModal() {
         document.body.style.overflow = 'auto';
     }
 }
-// --- نمایش سوالات با اصلاح آی‌دی‌ها ---
+
 function showQuestion() {
     const q = assessmentData.questions[currentQuestion];
     const container = document.getElementById('questionContainer');
     if (!container) return;
 
-    // بروزرسانی نوار پیشرفت
+    
     const progressFill = document.getElementById('progressFill');
     const progressText = document.getElementById('progressText');
     const percent = ((currentQuestion + 1) / assessmentData.questions.length) * 100;
@@ -147,16 +147,16 @@ function showQuestion() {
         </div>
     `;
 
-    // مدیریت دکمه قبلی
+    
     const prevBtn = document.getElementById('prevBtn');
     if(prevBtn) prevBtn.style.display = currentQuestion === 0 ? 'none' : 'block';
     
-    // تغییر متن دکمه در سوال آخر
+    
     const nextBtn = document.getElementById('nextBtn');
     if(nextBtn) nextBtn.textContent = currentQuestion === assessmentData.questions.length - 1 ? "مشاهده نتیجه" : "سوال بعدی";
 }
 
-// --- بستن مودال نتیجه و اسکرول به بخش ویدیوها ---
+
 function handleResultAction(targetId) {
     closeResultModal();
     setTimeout(() => {
@@ -186,25 +186,25 @@ function selectOption(index) {
 }
 
 function nextQuestion() {
-    // چک کردن انتخاب گزینه
+    
     if (selectedOptions[currentQuestion] === undefined) {
         alert("لطفاً یک گزینه را انتخاب کنید!");
         return;
     }
 
-    // اگر سوال آخر نیست، برو بعدی
+    
     if (currentQuestion < assessmentData.questions.length - 1) {
         currentQuestion++;
         showQuestion();
     } 
-    // اگر سوال آخر است، تابع محاسبه را صدا بزن
+    
     else {
         calculateResults();
     }
 }
 
 function calculateResults() {
-    // 1. ریست کردن دقیق امتیازها قبل از محاسبه
+    
     userScores = { frontend: 0, backend: 0, ai: 0 };
 
     selectedOptions.forEach((optionIndex, qIndex) => {
@@ -214,7 +214,7 @@ function calculateResults() {
         userScores.ai += scores.ai;
     });
 
-    // 2. پیدا کردن بیشترین امتیاز با دقت بالا
+    
     let resultKey = 'frontend';
     let maxScore = -1;
 function closeAssessmentModal() {
@@ -229,9 +229,9 @@ function closeAssessmentModal() {
             maxScore = userScores[key];
             resultKey = key;
         } 
-        // اگر امتیازها برابر بود، اولویت با فیلدی باشد که در سوال آخر انتخاب کردی
+        
         else if (userScores[key] === maxScore) {
-            // منطق ثانویه برای جلوگیری از تکرار صرف فرانت‌اند
+            
             const lastChoice = assessmentData.questions[4].options[selectedOptions[4]].score;
             if(lastChoice[key] > lastChoice[resultKey]) resultKey = key;
         }
@@ -258,7 +258,7 @@ function filterVideos(resultKey) {
         if (resultKey === 'backend' && tag.includes('backend')) isMatch = true;
         if (resultKey === 'ai' && tag.includes('ai')) isMatch = true;
 
-        // به جای تغییر مستقیم استایل، کلاس را اضافه یا حذف می‌کنیم
+        
         if (isMatch) {
             card.classList.remove('video-hidden');
         } else {
@@ -270,7 +270,7 @@ function filterVideos(resultKey) {
 function showFinalResult(resultKey) {
     const result = resultMap[resultKey];
     
-    // پنهان کردن کوییز و نشان دادن نتیجه
+    
     const assessModal = document.getElementById('assessmentModal');
     const resModal = document.getElementById('resultModal');
     
@@ -279,7 +279,7 @@ function showFinalResult(resultKey) {
     
     document.body.style.overflow = 'hidden';
 
-    // مقداردهی به المان‌ها (دقیقاً با آیدی‌های جدید)
+    
     document.getElementById('result-title').innerText = result.title;
     document.getElementById('result-percent').innerText = result.percent;
     document.getElementById('result-duration').innerText = result.duration;
@@ -299,7 +299,7 @@ function showFinalResult(resultKey) {
         btn.innerHTML = "تماشا کن <i class='fas fa-play'></i>";
     });
 }
-// --- 🚀 اسکرول نرم و افکت‌ها ---
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -321,7 +321,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// --- 👤 مدیریت کاربر ---
+
 function initUserSystem() {
     const userData = JSON.parse(localStorage.getItem('bitzone_user'));
     const statusArea = document.getElementById('user-status-area');
@@ -388,7 +388,7 @@ function goToCourse(pageUrl) {
     }
 }
 
-// --- 🌓 مدیریت تم ---
+
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     const isLight = savedTheme === 'light';
@@ -414,7 +414,7 @@ function updateThemeIcons(isLight) {
     }
 }
 
-// --- 🖥️ انیمیشن ماتریکس و تایپینگ ---
+
 function initMatrixEffect() {
     const canvas = document.getElementById('matrixCanvas');
     if (!canvas) return;
@@ -462,13 +462,13 @@ function runTypingAnimation() {
     });
 }
 
-// --- 🚀 اجرای اولیه ---
+
 document.addEventListener('DOMContentLoaded', () => {
     loadTheme();
     initUserSystem();
     initMatrixEffect();
     runTypingAnimation();
-    showQuestion(); // ← مهم برای نمایش اولین سوال
+    showQuestion(); 
 
     const themeTgl = document.getElementById('themeCheckbox');
     if(themeTgl) themeTgl.addEventListener('change', handleThemeChange);
@@ -488,24 +488,24 @@ function closeResultModal() {
         modal.style.display = 'none';
     }
 
-    // آزاد کردن صفحه
+    
     document.body.style.overflow = 'auto';
 }
-// تابع برای toggle منوی موبایل
+
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobileMenu');
     const body = document.body;
     
     if (mobileMenu.classList.contains('active')) {
         mobileMenu.classList.remove('active');
-        body.style.overflow = 'auto'; // فعال کردن اسکرول
+        body.style.overflow = 'auto'; 
     } else {
         mobileMenu.classList.add('active');
-        body.style.overflow = 'hidden'; // غیرفعال کردن اسکرول هنگام باز بودن منو
+        body.style.overflow = 'hidden'; 
     }
 }
 
-// بستن منوی موبایل هنگام کلیک روی لینک
+
 document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', () => {
         const mobileMenu = document.getElementById('mobileMenu');
@@ -514,7 +514,7 @@ document.querySelectorAll('.mobile-nav-link').forEach(link => {
     });
 });
 
-// مدیریت اسکرول نویگیشن در موبایل
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -529,7 +529,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth'
             });
             
-            // بستن منوی موبایل اگر باز است
+            
             const mobileMenu = document.getElementById('mobileMenu');
             if (mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
@@ -539,14 +539,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// مدیریت viewport برای موبایل
+
 function checkMobile() {
     const isMobile = window.innerWidth <= 768;
     const html = document.documentElement;
     
     if (isMobile) {
         html.classList.add('mobile-view');
-        // غیرفعال کردن برخی انیمیشن‌ها برای عملکرد بهتر
+        
         document.querySelectorAll('.floating-card').forEach(card => {
             card.style.animation = 'none';
         });
@@ -555,11 +555,11 @@ function checkMobile() {
     }
 }
 
-// اجرا هنگام لود و ریزایز
+
 window.addEventListener('load', checkMobile);
 window.addEventListener('resize', checkMobile);
 
-// جلوگیری از زوم در دبل تپ
+
 let lastTouchEnd = 0;
 document.addEventListener('touchend', function (event) {
     const now = (new Date()).getTime();
@@ -590,7 +590,7 @@ function selectPath(pathKey) {
     const title = document.getElementById('roadmap-title');
 
     title.innerText = data.title;
-    stepsContainer.innerHTML = ''; // پاک کردن مراحل قبلی
+    stepsContainer.innerHTML = ''; 
 
     data.steps.forEach((step, index) => {
         const stepDiv = document.createElement('div');
@@ -603,31 +603,31 @@ function selectPath(pathKey) {
     });
 
     display.style.display = 'block';
-    display.scrollIntoView({ behavior: 'smooth' }); // اسکرول نرم به بخش جدید
+    display.scrollIntoView({ behavior: 'smooth' }); 
 }
-// تابع باز و بسته کردن نظرسنجی
+
 function toggleSurvey() {
     const surveyModal = document.getElementById('surveyModal');
     if (!surveyModal) return;
 
     if (surveyModal.style.display === 'none' || surveyModal.style.display === '') {
         surveyModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // قفل کردن اسکرول
+        document.body.style.overflow = 'hidden'; 
     } else {
         surveyModal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // باز کردن اسکرول
+        document.body.style.overflow = 'auto'; 
     }
 }
 
-// ثبت امتیاز (ایموجی‌ها)
+
 let selectedRating = 0;
 function submitVote(rating) {
     selectedRating = rating;
-    // افکت بصری برای دکمه انتخاب شده
+    
     alert("امتیاز " + rating + " ثبت شد. لطفاً اگر نظری دارید بنویسید و ثبت نهایی را بزنید.");
 }
 
-// ثبت نهایی و بستن
+
 function finishSurvey() {
     const comment = document.getElementById('surveyComment').value;
     
@@ -636,11 +636,11 @@ function finishSurvey() {
         return;
     }
 
-    // در اینجا می‌توانید اطلاعات را به دیتابیس بفرستید
+    
     console.log("Survey Result:", { rating: selectedRating, comment: comment });
     
     alert("ممنون! نظر شما با موفقیت ثبت شد.");
-    toggleSurvey(); // بستن مودال
+    toggleSurvey(); 
 }
 function toggleMusic() {
     const music = document.getElementById('bgMusic');
@@ -649,11 +649,11 @@ function toggleMusic() {
 
     if (music.paused) {
         music.play();
-        icon.classList.replace('fa-play', 'fa-pause'); // تغییر آیکون به توقف
-        wave.classList.add('active'); // فعال شدن انیمیشن موج
+        icon.classList.replace('fa-play', 'fa-pause'); 
+        wave.classList.add('active'); 
     } else {
         music.pause();
-        icon.classList.replace('fa-pause', 'fa-play'); // تغییر آیکون به پخش
-        wave.classList.remove('active'); // غیرفعال شدن موج
+        icon.classList.replace('fa-pause', 'fa-play'); 
+        wave.classList.remove('active'); 
     }
 }

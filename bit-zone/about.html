@@ -23,7 +23,7 @@
             text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
         }
 
-        /* کادر اطلاعات شخصی با استایل درخواستی شما */
+        
         .personal-info-box {
             background: rgba(30, 10, 50, 0.6); 
             border-radius: 20px;
@@ -69,6 +69,18 @@
 
         .tech-icons i { transition: 0.3s; }
         .tech-icons i:hover { color: #bc13fe; transform: scale(1.2); filter: drop-shadow(0 0 8px #bc13fe); }
+        @media (max-width: 768px) {
+    .about-container, .contact-container {
+        width: 95% !important;
+        flex-direction: column !important; 
+        padding: 20px 10px !important;
+    }
+    
+    .about-image, .contact-info {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+}
     </style>
 </head>
 <body class="matrix-bg">

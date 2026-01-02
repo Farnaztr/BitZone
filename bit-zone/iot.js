@@ -14,13 +14,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const themeCheckbox = document.querySelector('#checkbox');
     
-    // لود کردن تم ذخیره شده
+    
     if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-mode');
         themeCheckbox.checked = true;
     }
 
-    // تغییر تم با کلیک
+    
     themeCheckbox.addEventListener('change', () => {
         if (themeCheckbox.checked) {
             document.body.classList.add('light-mode');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// تابع باز کردن تب‌ها
+
 function openTab(evt, tabName) {
     let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tab-item");
@@ -48,7 +48,7 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).classList.add("active");
     evt.currentTarget.classList.add("active");
 }
-    // ثبت سوالات فنی
+    
     document.getElementById('qaForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const name = document.getElementById('qaName').value;
@@ -63,7 +63,7 @@ function openTab(evt, tabName) {
         }
     });
 
-    // امتیازدهی
+    
     document.getElementById('sendPoll').addEventListener('click', function() {
         const star = document.querySelector('input[name="star"]:checked');
         if(star) {
@@ -88,7 +88,7 @@ function openTab(evt, tabName) {
         evt.currentTarget.classList.add("active");
     }
 
-    // ثبت سوال با استایل جدید
+    
     document.getElementById('qaForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const name = document.getElementById('qaName').value;
@@ -96,14 +96,14 @@ function openTab(evt, tabName) {
         
         const list = document.getElementById('qaList');
         const msg = document.createElement('div');
-        msg.className = "qa-msg-card"; // استایل این را در CSS اضافه کن
+        msg.className = "qa-msg-card"; 
         msg.style = "background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border-right: 3px solid #22d3ee; margin-bottom: 10px;";
         msg.innerHTML = `<small style="color:#22d3ee">${name}</small><p style="margin:5px 0 0 0">${text}</p>`;
         
         list.prepend(msg);
         this.reset();
     });
-    // مدیریت تب‌ها
+    
     function openTab(evt, tabName) {
         let i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tab-item");
@@ -120,7 +120,7 @@ function openTab(evt, tabName) {
         evt.currentTarget.classList.add("active");
     }
 
-    // تابع کپی کردن کد
+    
     function copyCode() {
         const codeText = document.getElementById('projectCode').innerText;
         navigator.clipboard.writeText(codeText).then(() => {
@@ -134,7 +134,7 @@ function openTab(evt, tabName) {
         });
     }
 
-    // تابع ثبت امتیاز
+    
     function submitPoll() {
         const stars = document.querySelector('input[name="star"]:checked');
         const msgBox = document.getElementById('poll-msg');
@@ -150,7 +150,7 @@ function openTab(evt, tabName) {
         }
     }
 
-    // فرم گفتگو
+    
     document.getElementById('qaForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const name = document.getElementById('qaName').value;

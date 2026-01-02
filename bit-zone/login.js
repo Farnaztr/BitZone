@@ -1,10 +1,10 @@
-// انتخاب المان‌ها
+
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 const introLayer = document.getElementById('bit-intro');
 const introText = document.getElementById('intro-text');
 const statusText = document.getElementById('status-text');
-const bar = document.getElementById('progress-bar'); // نوار پیشرفت لودینگ
+const bar = document.getElementById('progress-bar'); 
 const card = document.getElementById('login-card');
 let particles = [];
 let mouse = { x: null, y: null, radius: 100 };
@@ -15,16 +15,16 @@ document.getElementById('auth-form').addEventListener('submit', function(e) {
     const userInput = document.getElementById('user-identifier').value;
     const userPass = document.getElementById('user-password').value;
     
-    // دریافت لیست تمام کاربران ثبت‌نام شده
+    
     let allUsers = JSON.parse(localStorage.getItem('bitzone_users_list')) || [];
     
-    // پیدا کردن کاربر مورد نظر
+    
     const existingUser = allUsers.find(u => u.username === userInput);
 
     if (existingUser) {
-        // اگر کاربر پیدا شد، چک کردن رمز عبور
+        
         if (existingUser.password === userPass) {
-            // ورود موفق
+            
             localStorage.setItem('bitzone_user', JSON.stringify(existingUser));
             const btn = document.querySelector('.submit-btn');
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال تایید...';
@@ -34,26 +34,26 @@ document.getElementById('auth-form').addEventListener('submit', function(e) {
             alert("خطا: رمز عبور اشتباه است!");
         }
     } else {
-        // اگر کاربر پیدا نشد
+        
         alert("این نام کاربری وجود ندارد. لطفاً ابتدا ثبت‌نام کنید.");
     }
 });
 
-// چک کردن اینکه آیا کاربر قبلاً لاگین کرده یا نه
-// چک کردن وضعیت کاربر (اصلاح شده)
+
+
 const userData = JSON.parse(localStorage.getItem('bitzone_user'));
 
 if (userData) {
     console.log("خوش آمدی " + userData.username);
-    // اگر کاربر قبلاً لاگین کرده، مستقیم برود به صفحه اصلی و دیگر در لاگین نماند
+    
     window.location.href = 'index.html';
 } else {
-    // اگر لاگین نیست، هیچ کاری نکن (بماند در همین صفحه تا فرم را پر کند)
+    
     console.log("لطفا لاگین کنید.");
 }
-// --- ۱. مدیریت اینترو حرفه‌ای (انفجاری و ماتریکسی) ---
+
 function startIntro() {
-    // ایجاد باران ماتریکسی بنفش
+    
     const columns = Math.floor(window.innerWidth / 25);
     for (let i = 0; i < columns; i++) {
         setTimeout(() => {
@@ -71,7 +71,7 @@ function startIntro() {
         }, i * 40);
     }
 
-    // انیمیشن نوار پیشرفت و پیام‌های سیستم
+    
     setTimeout(() => {
         if(bar) bar.style.width = '100%';
     }, 100);
@@ -90,7 +90,7 @@ function startIntro() {
         if(msgIndex >= messages.length) clearInterval(msgInterval);
     }, 900);
 
-    // ظاهر شدن BITZONE با افکت نئونی
+    
     setTimeout(() => {
         introText.style.display = 'block';
         introText.animate([
@@ -100,7 +100,7 @@ function startIntro() {
         introText.style.opacity = '1';
     }, 2000);
 
-    // خروج انفجاری اینترو و نمایش فرم فارسی
+    
     setTimeout(() => {
         introLayer.style.filter = "hue-rotate(45deg) brightness(1.5)";
         introLayer.style.opacity = '0';
@@ -113,7 +113,7 @@ function startIntro() {
     }, 4800);
 }
 
-// --- ۲. منطق شبکه عصبی (پس‌زمینه) ---
+
 class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
@@ -129,7 +129,7 @@ class Particle {
         if (this.y > canvas.height || this.y < 0) this.vy *= -1;
     }
     draw() {
-        ctx.fillStyle = '#bc13fe'; // بنفش نئونی
+        ctx.fillStyle = '#bc13fe'; 
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -170,7 +170,7 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// --- ۳. اجرای نهایی ---
+
 window.onload = () => {
     init();
     animate();
@@ -180,25 +180,25 @@ window.onload = () => {
 window.onresize = () => {
     init();
 };
-// --- بخش اختصاصی ثبت‌نام و فراموشی رمز (بدون تغییر در کدهای قبلی) ---
 
-// ۱. باز کردن مودال ثبت‌نام
+
+
 function openRegisterModal(e) {
     if(e) e.preventDefault();
     const modal = document.getElementById('registerModal');
     if(modal) modal.style.display = 'flex';
 }
 
-// ۲. بستن مودال ثبت‌نام
+
 function closeRegisterModal() {
     const modal = document.getElementById('registerModal');
     if(modal) modal.style.display = 'none';
 }
 
-// ۳. تایید و ذخیره کاربر جدید در LocalStorage
+
 function confirmRegistration() {
     const u = document.getElementById('usernameInput').value;
-    const p = "1234"; // رمز عبور پیش‌فرض برای کاربران جدید
+    const p = "1234"; 
 
     if (!u || u.trim() === "") {
         alert("لطفاً نام کاربری را وارد کنید.");
@@ -207,7 +207,7 @@ function confirmRegistration() {
 
     let allUsers = JSON.parse(localStorage.getItem('bitzone_users_list')) || [];
     
-    // بررسی تکراری نبودن نام کاربری
+    
     if (allUsers.some(user => user.username === u)) {
         alert("این نام کاربری قبلاً ثبت شده است.");
     } else {
@@ -218,7 +218,7 @@ function confirmRegistration() {
     }
 }
 
-// ۴. منطق بازیابی رمز عبور (فراموشی کلید)
+
 if (document.getElementById('forgot-btn')) {
     document.getElementById('forgot-btn').addEventListener('click', function(e) {
         e.preventDefault();
@@ -245,9 +245,9 @@ if (document.getElementById('forgot-btn')) {
         }
     });
 }
-// --- بخش ثبت نام و فراموشی رمز (فقط این را به انتهای فایل اضافه کن) ---
 
-// تابع باز کردن مودال
+
+
 window.openRegisterModal = function(e) {
     if(e) e.preventDefault();
     const modal = document.getElementById('registerModal');
@@ -258,15 +258,15 @@ window.openRegisterModal = function(e) {
     }
 };
 
-// تابع بستن مودال
+
 window.closeRegisterModal = function() {
     const modal = document.getElementById('registerModal');
     if(modal) modal.style.display = 'none';
 };
 
-// --- سیستم مدیریت کاربر با امنیت سوال امنیتی ---
 
-// ۱. ثبت‌نام با نام کاربری، رمز و سوال امنیتی
+
+
 window.processRegistration = function() {
     const u = document.getElementById('regUser').value.trim();
     const p = document.getElementById('regPass').value.trim();
@@ -284,11 +284,11 @@ window.processRegistration = function() {
         return;
     }
 
-    // ذخیره اطلاعات به صورت پکیج امن
+    
     allUsers.push({ 
         username: u, 
         password: p, 
-        securityAnswer: a.toLowerCase() // ذخیره پاسخ به صورت حروف کوچک برای دقت بیشتر
+        securityAnswer: a.toLowerCase() 
     });
     
     localStorage.setItem('bitzone_users_list', JSON.stringify(allUsers));
@@ -296,7 +296,7 @@ window.processRegistration = function() {
     window.closeRegisterModal();
 };
 
-// ۲. مراحل بازیابی رمز عبور (فراموشی رمز)
+
 if (document.getElementById('forgot-btn')) {
     document.getElementById('forgot-btn').addEventListener('click', function(e) {
         e.preventDefault();
@@ -315,7 +315,7 @@ if (document.getElementById('forgot-btn')) {
             return;
         }
 
-        // مرحله امنیتی: پرسیدن سوال امنیتی به جای نمایش مستقیم رمز
+        
         const answer = prompt("مرحله امنیتی: نام اولین معلم شما چیست؟");
         
         if (answer && answer.toLowerCase() === user.securityAnswer) {
@@ -326,7 +326,7 @@ if (document.getElementById('forgot-btn')) {
     });
 }
 window.showMessage = function(text, type = 'info') {
-    // حذف پیام قبلی اگر وجود داشت
+    
     const oldAlert = document.querySelector('.custom-alert');
     if (oldAlert) oldAlert.remove();
 
@@ -335,7 +335,7 @@ window.showMessage = function(text, type = 'info') {
     alertBox.innerHTML = `<span>${text}</span>`;
     document.body.appendChild(alertBox);
 
-    // حذف خودکار بعد از ۳ ثانیه
+    
     setTimeout(() => {
         alertBox.style.opacity = '0';
         alertBox.style.transform = 'translateX(100%)';
@@ -343,30 +343,30 @@ window.showMessage = function(text, type = 'info') {
         setTimeout(() => alertBox.remove(), 400);
     }, 3000);
 };
-// --- سیستم هوشمند بازیابی رمز عبور (نسخه اصلاح شده) ---
+
 
 setTimeout(() => {
     const fBtn = document.getElementById('forgot-btn');
     const msgBox = document.getElementById('forgot-message');
 
     if (fBtn) {
-        // حذف تمام رویدادهای قبلی (برای جلوگیری از تکرار پیام)
+        
         const newBtn = fBtn.cloneNode(true);
         fBtn.parentNode.replaceChild(newBtn, fBtn);
 
         newBtn.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // ۱. دریافت نام کاربری
+            
             const u = document.getElementById('user-identifier').value.trim();
             
-            // ۲. بررسی خالی نبودن (فقط یک بار چک می‌شود)
+            
             if (!u) {
                 alert("خطا: ابتدا نام کاربری خود را وارد کنید.");
                 return; 
             }
 
-            // ۳. جستجو در دیتابیس
+            
             let allUsers = JSON.parse(localStorage.getItem('bitzone_users_list')) || [];
             const user = allUsers.find(user => user.username === u);
 
@@ -376,10 +376,10 @@ setTimeout(() => {
                 return;
             }
 
-            // ۴. مرحله امنیتی (پرسیدن سوال)
+            
             const answer = prompt("تایید هویت امنیتی:\nنام اولین معلم شما چیست؟");
             
-            // ۵. بررسی دقیق پاسخ (بدون نمایش رمز در صورت اشتباه)
+            
             if (answer && user.securityAnswer && answer.toLowerCase() === user.securityAnswer.toLowerCase()) {
                 alert("هویت شما تایید شد!");
                 if(msgBox) {
@@ -388,11 +388,12 @@ setTimeout(() => {
                     msgBox.innerHTML = `🔑 رمز عبور شما: <strong style="color:#fff">${user.password}</strong>`;
                 }
             } else if (answer === null) {
-                // کاربر کنسل کرده، کاری نکن
+                
             } else {
                 alert("پاسخ اشتباه است! اجازه دسترسی به رمز صادر نشد.");
                 if(msgBox) msgBox.style.display = 'none';
             }
         });
     }
-}, 5000); // زمان را به ۵ ثانیه افزایش دادم تا اینترو کاملاً تمام شود
+}, 5000); 
+
