@@ -1,21 +1,20 @@
-[![Run Tests](https://github.com/Farnaztr/BitZone/actions/workflows/tests.yml/badge.svg)](https://github.com/Farnaztr/BitZone/actions/workflows/tests.yml)
-
 # 🌌 BitZone | Developer Ecosystem
 
 <p align="center">
-  <a href="https://farnaztr.github.io/BitZone/">
-    <img src="https://img.shields.io/badge/🚀_Live_Demo-Experience_Now-bc13fe?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=0f2027" />
-  </a>
-  <a href="https://github.com/farnaztr/BitZone">
-    <img src="https://img.shields.io/badge/⭐_Star_on_GitHub-Support_Project-f1e05a?style=for-the-badge&logo=github&logoColor=black" />
-  </a>
+  <a href="https://github.com/Farnaztr/BitZone/actions/workflows/tests.yml">
+    <img src="https://github.com/Farnaztr/BitZone/actions/workflows/tests.yml/badge.svg" alt="Run Tests" />
+  </a>
+  <img src="https://img.shields.io/badge/Architecture-MPA_Sync_Engine-00d4ff?style=flat-square" />
+  <img src="https://img.shields.io/badge/Optimization-Stable_60_FPS-4CAF50?style=flat-square" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Architecture-MPA_Sync_Engine-00d4ff?style=flat-square" />
-  <img src="https://img.shields.io/badge/Core-Vanilla_JavaScript_ES6+-f1e05a?style=flat-square" />
-  <img src="https://img.shields.io/badge/UI-Cyberpunk_Glassmorphism-8b5cf6?style=flat-square" />
-  <img src="https://img.shields.io/badge/Optimization-Stable_60_FPS-4CAF50?style=flat-square" />
+  <a href="https://farnaztr.github.io/BitZone/">
+    <img src="https://img.shields.io/badge/🚀_Live_Demo-Experience_Now-bc13fe?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=0f2027" />
+  </a>
+  <a href="https://github.com/farnaztr/BitZone">
+    <img src="https://img.shields.io/badge/⭐_Star_on_GitHub-Support_Project-f1e05a?style=for-the-badge&logo=github&logoColor=black" />
+  </a>
 </p>
 
 ---
