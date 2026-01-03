@@ -185,16 +185,11 @@ The core logic of BitZone is verified through automated unit tests.
 ---
 
 ### 📸 Visual Coverage Evidence
-<table style="width: 100%; border-collapse: collapse;">
-  <tr>
-    
-     <td>
-      <img src="https://github.com/user-attachments/assets/8e3d4ac9-c4eb-49a5-a495-1c3feac37a9a" alt=
-"The 50% Branch coverage in auth.js is due to the if (typeof module !== 'undefined') safety check, which is only triggered during the Node.js testing environment, ensuring the code remains compatible with both browsers and testing frameworks." style="width: 100%; border-radius: 8px;" style="width: 100%; border-radius: 8px;">
-    </td>
-  
-  </tr>
-</table>
+
+<p align="center"> <img src="https://github.com/user-attachments/assets/8e3d4ac9-c4eb-49a5-a495-1c3feac37a9a" alt="Jest Coverage Report" width="100%">
+
+
+<i>The <b>50% Branch coverage</b> in <code>auth.js</code> is due to the <code>if (typeof module !== 'undefined')</code> safety check, which is only triggered during the Node.js testing environment, ensuring the code remains compatible with both browsers and testing frameworks.</i> </p>
 
 ---
 
