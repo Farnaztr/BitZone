@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نقشه راه فرانت‌اِند | BitZone</title>
+    <link rel="stylesheet" href="all.min.css">
+    <link rel="stylesheet" href="font.css">
+         <link rel="icon" type="image/png" href="images/bitzone.png">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --secondary: #4facfe;
+            --bg: #05050a;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Vazir', sans-serif; /* مطمئن شو نام فونتت در font.css همین است */
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- هدر حرفه‌ای و ثابت --- */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(5, 5, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img { width: 40px; }
+
+        .back-btn {
+            text-decoration: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            font-size: 14px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .back-btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(138, 43, 226, 0.5); }
+
+        /* --- بخش نقشه راه --- */
+        .roadmap-container {
+            max-width: 1000px;
+            margin: 120px auto 50px;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* خط مرکزی جاده */
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--primary), var(--secondary), transparent);
+            transform: translateX(-50%);
+        }
+
+        .step {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        /* دایره‌های نورانی وسط */
+        .step-core {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
+            z-index: 5;
+        }
+
+        .step-content {
+            width: 42%;
+            padding: 30px;
+            background: var(--glass);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .step:nth-child(even) .step-content { margin-right: auto; }
+        .step:nth-child(odd) .step-content { margin-left: auto; }
+
+        .step-content:hover {
+            background: rgba(255,255,255,0.07);
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        .step-content h3 {
+            margin-top: 0;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-content p {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        /* --- ریسپانسیو برای موبایل --- */
+        @media (max-width: 768px) {
+            .header { padding: 15px 20px; }
+            .roadmap-container::before { left: 20px; }
+            .step-core { left: 20px; }
+            .step-content { width: calc(100% - 60px); margin-right: 0 !important; margin-left: auto !important; }
+            .step { margin-bottom: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-box">
+            <img src="images/bitzone.png" alt="Logo" class="logo-img"> <span style="font-weight: bold; font-size: 20px; letter-spacing: 1px;">BitZone</span>
+        </div>
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-house" style="margin-left: 5px;"></i> بازگشت به خانه
+        </a>
+    </header>
+
+    <div class="roadmap-container">
+        <div class="step">
+            <div class="step-core"></div>
+            <div class="step-content">
+                <h3><i class="fa-solid fa-code"></i> HTML5 & CSS3</h3>
+                <p>شروع مسیر با یادگیری ساختار وب و استایل‌دهی مدرن. تسلط بر Flexbox و Grid برای طراحی‌های ریسپانسیو ضروری است.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-core"></div>
+            <div class="step-content">
+                <h3><i class="fa-brands fa-js"></i> JavaScript ES6+</h3>
+                <p>قلب تپنده فرانت‌اِند. یادگیری برنامه‌نویسی فانکشنال، کار با APIها و مفاهیم پیشرفته‌ای مثل Async/Await.</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-core"></div>
+            <div class="step-content">
+                <h3><i class="fa-brands fa-react"></i> React Framework</h3>
+                <p>ورود به دنیای کامپوننت‌ها. یادگیری Hooks، مدیریت State و ساخت اپلیکیشن‌های تک‌صفحه‌ای (SPA) فوق‌سریع.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

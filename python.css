@@ -1,0 +1,978 @@
+/* python.css - ادامه CSS صفحه پایتون */
+
+/* === متغیرهای رنگ پایتون === */
+:root {
+    --python-blue: #3776ab;
+    --python-yellow: #ffd43b;
+    --python-dark: #306998;
+    --python-light: #4b8bbe;
+    --accent-green: #10b981;
+    --accent-purple: #8b5cf6;
+    --dark-bg: #0a0f1a;
+    --card-bg: rgba(19, 30, 49, 0.9);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #2d3748;
+    --neon-glow: 0 0 20px rgba(55, 118, 171, 0.3);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === حالت روشن (Light Mode) === */
+body.light-mode {
+    --bg-color: #f1f5f9;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --text-color: #1e293b;
+    --nav-bg: #ffffff;
+    --accent-color: #2563eb;
+    --text-primary: #394e71;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --neon-glow: 0 0 20px rgba(55, 118, 171, 0.1);
+}
+
+body.light-mode .python-glow-bg {
+    background: 
+         rgba(234, 251, 255, 0.9);
+}
+
+body.light-mode .navbar {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 2px solid var(--python-blue);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .logo {
+    background: linear-gradient(45deg, var(--python-blue), var(--python-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.light-mode .project-card,
+body.light-mode .library-card,
+body.light-mode .rec-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(55, 118, 171, 0.1);
+    color: var(--text-primary);
+}
+
+body.light-mode .project-card:hover,
+body.light-mode .library-card:hover,
+body.light-mode .rec-card:hover {
+    border-color: var(--python-yellow);
+    box-shadow: 0 10px 30px rgba(55, 118, 171, 0.1);
+}
+
+body.light-mode .code-window {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+}
+
+body.light-mode pre#projectCode {
+    color: #059669;
+}
+
+body.light-mode .github-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+}
+
+body.light-mode .tag {
+    background: rgba(55, 118, 171, 0.1);
+    color: var(--python-blue);
+}
+
+/* === استایل‌های پایه === */
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: rtl;
+    margin: 0;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === افکت پس‌زمینه پایتون === */
+.python-glow-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(55, 118, 171, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 212, 59, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    pointer-events: none;
+    animation: pythonFloat 15s infinite alternate ease-in-out;
+}
+
+@keyframes pythonFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-20px, 20px) scale(1.05); }
+}
+
+/* === ناوبری === */
+.navbar {
+    background: rgba(10, 15, 26, 0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 2px solid var(--python-blue);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--neon-glow);
+    transition: var(--transition);
+}
+.nav-left {
+    display: flex;       /* چیدن المان‌ها در یک خط */
+    align-items: center; /* تراز کردن عمودی */
+    gap: 1.5rem;         /* ایجاد فاصله مناسب بین سوئیچ و دکمه خانه */
+}
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* این بخش را در فایل خود پیدا کنید و به این شکل اصلاح کنید */
+@media (max-width: 768px) {
+    /* ... کدهای قبلی ... */
+    
+    .nav-left {
+        width: auto; /* تغییر از 100% به auto */
+        justify-content: center;
+        display: flex; /* اطمینان از فلکس بودن در موبایل */
+        flex-direction: row; /* جلوگیری از ستونی شدن در موبایل */
+        gap: 1rem;
+    }
+}
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    color: var(--python-yellow);
+    filter: drop-shadow(0 0 10px rgba(255, 212, 59, 0.5));
+    animation: pythonSpin 4s linear infinite;
+}
+
+@keyframes pythonSpin {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(90deg); }
+    50% { transform: rotate(180deg); }
+    75% { transform: rotate(270deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--python-blue), var(--python-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--python-yellow);
+}
+
+/* سوئیچ تم */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2d3748;
+    transition: var(--transition);
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: var(--transition);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 212, 59, 0.5);
+}
+
+input:checked + .slider {
+    background-color: var(--python-blue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+    background-color: var(--python-yellow);
+}
+
+.nav-icon-back {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--python-yellow);
+    text-decoration: none;
+    border: 1px solid rgba(255, 212, 59, 0.3);
+    transition: var(--transition);
+}
+
+.nav-icon-back:hover {
+    background: var(--python-yellow);
+    color: #000;
+    box-shadow: 0 0 15px var(--python-yellow);
+}
+
+/* === هدر اصلی === */
+.main-header {
+    text-align: center;
+    margin: 3rem auto 2rem;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.python-badge {
+    background: linear-gradient(45deg, var(--python-blue), var(--accent-green));
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(55, 118, 171, 0.3);
+}
+
+.main-header h1 {
+    font-size: 2.8rem;
+    background: linear-gradient(45deg, var(--python-blue), var(--python-yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(55, 118, 171, 0.2);
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* === بخش ویدیو === */
+.video-section {
+    margin: 3rem auto;
+    max-width: 1000px;
+    padding: 0 2rem;
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 3px solid var(--python-blue);
+    box-shadow: 0 20px 60px rgba(55, 118, 171, 0.2);
+}
+
+.video-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-controls-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.quality-badge {
+    background: var(--python-yellow);
+    color: #000;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* === تب‌ها === */
+.content-tabs {
+    background: var(--card-bg);
+    margin: 3rem auto;
+    max-width: 1200px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--neon-glow);
+}
+
+.tab-header {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 1.2rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    min-width: 150px;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    background: rgba(55, 118, 171, 0.1);
+    color: var(--python-yellow);
+}
+
+.tab-btn.active {
+    background: linear-gradient(45deg, rgba(55, 118, 171, 0.2), rgba(255, 212, 59, 0.1));
+    color: var(--python-yellow);
+    border-bottom: 3px solid var(--python-yellow);
+}
+
+.tab-body {
+    padding: 2.5rem;
+}
+
+.tab-item {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-item.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === پروژه‌ها === */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(55, 118, 171, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--python-yellow);
+    box-shadow: 0 10px 30px rgba(55, 118, 171, 0.2);
+}
+
+.project-icon {
+    font-size: 2.5rem;
+    color: var(--python-yellow);
+    margin-bottom: 1rem;
+}
+
+.project-card h3 {
+    color: var(--python-yellow);
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(55, 118, 171, 0.2);
+    color: var(--python-blue);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.tag:hover {
+    background: rgba(255, 212, 59, 0.2);
+    color: var(--python-yellow);
+}
+
+/* === کارت گیت‌هاب === */
+.github-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.github-card:hover {
+    border-color: var(--python-yellow);
+    background: rgba(55, 118, 171, 0.05);
+}
+
+.github-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.github-icon {
+    font-size: 3rem;
+    color: white;
+}
+
+.github-info h3 {
+    margin: 0;
+    color: var(--python-yellow);
+}
+
+.github-info p {
+    margin: 0.3rem 0 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.github-link, .youtube-link {
+    background: var(--python-blue);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: var(--transition);
+}
+
+.github-link:hover, .youtube-link:hover {
+    background: var(--python-yellow);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 212, 59, 0.3);
+}
+
+.youtube-link {
+    background: #ff0000;
+}
+
+.youtube-link:hover {
+    background: #cc0000;
+}
+
+/* === بخش کدها === */
+.code-preview-container h3 {
+    color: var(--python-yellow);
+    margin-bottom: 1rem;
+}
+
+.code-window {
+    background: #0d1117;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+    overflow: hidden;
+    position: relative;
+    max-height: 300px;
+}
+
+pre#projectCode {
+    padding: 2rem;
+    margin: 0;
+    color: #7ee787;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.6;
+    direction: ltr;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+.code-fade-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #0d1117);
+    pointer-events: none;
+}
+
+.code-footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.copy-btn {
+    background: var(--python-blue);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.copy-btn:hover {
+    background: var(--python-yellow);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.view-more-github {
+    color: var(--python-yellow);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.view-more-github:hover {
+    text-shadow: 0 0 10px var(--python-yellow);
+}
+
+/* === کتابخانه‌ها === */
+.libraries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.library-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(55, 118, 171, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.library-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--python-yellow);
+}
+
+.library-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.library-icon {
+    font-size: 2rem;
+}
+
+.library-card h3 {
+    color: var(--python-yellow);
+    margin: 0;
+}
+
+.library-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.library-stats {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.stat {
+    color: var(--python-blue);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* === فرم انجمن === */
+.modern-qa-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--python-yellow);
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(55, 118, 171, 0.3);
+    border-radius: 10px;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--python-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 212, 59, 0.1);
+}
+
+.qa-submit-btn {
+    background: linear-gradient(45deg, var(--python-blue), var(--accent-green));
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: var(--transition);
+}
+
+.qa-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(55, 118, 171, 0.3);
+}
+
+.qa-messages-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* === سطوح مهارت === */
+.skill-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.skill-level {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skill-level:hover {
+    border-color: var(--python-blue);
+    transform: translateY(-3px);
+}
+
+.skill-level.selected {
+    border-color: var(--python-yellow);
+    background: rgba(255, 212, 59, 0.1);
+}
+
+.level-icon {
+    font-size: 2rem;
+    color: var(--python-yellow);
+}
+
+.level-info h4 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.level-info p {
+    margin: 0.3rem 0 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.level-check {
+    margin-right: auto;
+    color: var(--python-yellow);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.skill-level.selected .level-check {
+    opacity: 1;
+}
+
+/* === ویدیوهای پیشنهادی === */
+.video-recommendations {
+    margin: 3rem auto;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.video-recommendations h3 {
+    color: var(--python-yellow);
+    margin-bottom: 1.5rem;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.rec-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(55, 118, 171, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rec-card:hover {
+    border-color: var(--python-yellow);
+    transform: translateY(-3px);
+}
+
+.rec-thumbnail {
+    font-size: 2rem;
+    color: var(--python-yellow);
+}
+
+.rec-info h4 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.rec-info p {
+    margin: 0.3rem 0 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* === پیام‌ها === */
+.feedback-msg {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    display: none;
+    text-align: center;
+    font-weight: 600;
+}
+
+.msg-success {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid #10b981;
+}
+
+.msg-error {
+    background: rgba(244, 63, 94, 0.2);
+    color: #f43f5e;
+    border: 1px solid #f43f5e;
+}
+
+/* === ریسپانسیو === */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .nav-left, .nav-right {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .main-header h1 {
+        font-size: 2rem;
+    }
+    
+    .tab-header {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        min-width: 100%;
+        padding: 1rem;
+    }
+    
+    .projects-grid,
+    .libraries-grid,
+    .skill-levels,
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .github-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .video-frame {
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-body {
+        padding: 1.5rem;
+    }
+    
+    .main-header {
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+}
+
+/* === افکت‌های ویژه پایتون === */
+.python-pulse {
+    animation: pythonPulse 2s infinite;
+}
+
+@keyframes pythonPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(55, 118, 171, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(55, 118, 171, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(55, 118, 171, 0);
+    }
+}
+
+/* === اسکرول بار سفارشی === */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--python-blue), var(--python-yellow));
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, var(--python-yellow), var(--python-blue));
+}
