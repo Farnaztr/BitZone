@@ -2,7 +2,6 @@
 
 <p align="center">
   <a href="https://github.com/Farnaztr/BitZone/actions/workflows/tests.yml">
-    <img src="https://github.com/Farnaztr/BitZone/actions/workflows/tests.yml/badge.svg" alt="Run Tests" />
   </a>
   <img src="https://img.shields.io/badge/Architecture-MPA_Sync_Engine-00d4ff?style=flat-square" />
   <img src="https://img.shields.io/badge/Optimization-Stable_60_FPS-4CAF50?style=flat-square" />
