@@ -36,7 +36,7 @@ https://farnaztr.github.io/BitZone/
 This live deployment allows reviewers to explore the full experience exactly as end-users see it.
 
 ---
-## 📸 Visual Showcase
+## Visual Showcase
 
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
@@ -184,7 +184,7 @@ The core logic of BitZone is verified through automated unit tests.
 
 ---
 
-### 📸 Visual Coverage Evidence
+### Visual Coverage Evidence
 
 <p align="center"> <img src="https://github.com/user-attachments/assets/8e3d4ac9-c4eb-49a5-a495-1c3feac37a9a" alt="Jest Coverage Report" width="100%">
 
