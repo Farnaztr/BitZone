@@ -27,14 +27,7 @@ BitZone is not a demo — it is a **portfolio-level system** designed to reflect
 
 ---
 
-## 🌐 Live Deployment
 
-🔗 **Live Website:**  
-https://farnaztr.github.io/BitZone/
-
-This live deployment allows reviewers to explore the full experience exactly as end-users see it.
-
----
 ## Visual Showcase
 
 <table style="width: 100%; border-collapse: collapse;">
