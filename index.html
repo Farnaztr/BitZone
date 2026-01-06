@@ -1,6 +1,7 @@
     <!DOCTYPE html>
     <html lang="fa" dir="rtl">
     <head>
+
         <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BitZone</title>
@@ -8,9 +9,95 @@
         
         <link rel="stylesheet" href="font.css">
         <link rel="stylesheet" href="style.css">
+        
 <link rel="icon" type="image/png" href="images/bitzone.png" title="BitZone Icon">
-    </head>
-    <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    #hero-entrance { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    #main-site-content { visibility: hidden; opacity: 0; transition: opacity 1s ease; }
+    canvas { position: absolute; top: 0; left: 0; }
+    #main-title { position: relative; z-index: 10000; color: #fff; font-family: sans-serif; text-align: center; pointer-events: none; }
+</style>
+<script>
+    if (sessionStorage.getItem('hasSeenIntro')) {
+        document.documentElement.classList.add('intro-seen');
+    }
+</script>
+<style>
+    
+    .intro-seen #hero-entrance { display: none !important; }
+    .intro-seen #main-site-content { visibility: visible !important; opacity: 1 !important; }
+</style>
+</head>
+<body>
+<section id="hero-entrance" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #000; z-index: 9999; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+    <div id="canvas-container" style="position: absolute; width: 100%; height: 100%; z-index: 1;"></div>
+    
+    <div id="flash-effect" style="position: absolute; width: 100%; height: 100%; background: white; opacity: 0; z-index: 20000; pointer-events: none; transition: opacity 0.3s;"></div>
+
+    <div class="hero-content" style="position: relative; z-index: 10; text-align: center;">
+        <h1 id="main-title" style="font-size: clamp(3rem, 10vw, 7rem); color: #fff; text-shadow: 0 0 20px #bc13fe; letter-spacing: 20px; transition: 1.5s cubic-bezier(0.19, 1, 0.22, 1);">BITZONE</h1>
+        <p id="status-text" style="color: #8affff; font-family: monospace; letter-spacing: 10px; opacity: 0.5; margin-top: 20px;">READY FOR UPLOAD</p>
+        
+        <div style="margin-top: 60px;">
+<button onclick="theUltimateWarp()" id="enter-btn" class="glass-button">
+                    INITIALIZE
+            </button>
+            <style>
+.glass-button {
+    padding: 18px 50px;
+    border: 1px solid rgba(188, 19, 254, 0.5);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05); 
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    backdrop-filter: blur(15px); 
+    box-shadow: 0 8px 32px 0 rgba(188, 19, 254, 0.3);
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-button:hover {
+    background: rgba(188, 19, 254, 0.2);
+    border-color: #bc13fe;
+    box-shadow: 0 0 20px #bc13fe, inset 0 0 10px #bc13fe;
+    transform: translateY(-3px);
+    letter-spacing: 6px;
+}
+
+.glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.glass-button:hover::before {
+    left: 100%;
+}
+</style>
+        </div>
+    </div>
+</section>
+
+<style>
+    
+    .shake-anim { animation: shake 0.2s infinite; }
+    @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        25% { transform: translate(-1px, -2px) rotate(-1deg); }
+        50% { transform: translate(-3px, 0px) rotate(1deg); }
+        75% { transform: translate(3px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -1px) rotate(1deg); }
+    }
+</style>
 
         <nav class="navbar">
     <div class="nav-container">
@@ -682,7 +769,11 @@
     </div>
     <i id="musicIcon" class="fas fa-play"></i>
 </div>
-        <script src="script.js"></script>
-    </body>
+<div id="custom-cursor"></div>
+<div class="cursor-dot"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="3d-hologram.js"></script>
+    <script src="script.js"></script>
 
+    </body>
     </html>
