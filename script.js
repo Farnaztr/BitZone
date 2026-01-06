@@ -657,3 +657,19 @@ function toggleMusic() {
         wave.classList.remove('active'); 
     }
 }
+function startMasterEntry() {
+    const entrance = document.getElementById('hero-entrance');
+    const mainContent = document.getElementById('main-site-content');
+    entrance.style.transition = "opacity 1s, transform 1s";
+    entrance.style.opacity = "0";
+    entrance.style.transform = "scale(1.2)";
+    
+    setTimeout(() => {
+        entrance.style.display = 'none';
+        mainContent.style.visibility = 'visible';
+        mainContent.style.opacity = '1';
+        document.body.style.overflow = 'auto';
+        
+        runTypingAnimation();
+    }, 1000);
+}
