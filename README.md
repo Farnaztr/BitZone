@@ -8,9 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://farnaztr.github.io/BitZone/">
-    <img src="https://img.shields.io/badge/🚀_Live_Demo-Experience_Now-bc13fe?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=0f2027" />
-  </a>
+  
   <a href="https://github.com/farnaztr/BitZone">
     <img src="https://img.shields.io/badge/⭐_Star_on_GitHub-Support_Project-f1e05a?style=for-the-badge&logo=github&logoColor=black" />
   </a>
