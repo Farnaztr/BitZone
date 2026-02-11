@@ -5,14 +5,10 @@
   </a>
   <img src="https://img.shields.io/badge/Architecture-MPA_Sync_Engine-00d4ff?style=flat-square" />
   <img src="https://img.shields.io/badge/Optimization-Stable_60_FPS-4CAF50?style=flat-square" />
+
 </p>
 
-<p align="center">
   
-  <a href="https://github.com/farnaztr/BitZone">
-    <img src="https://img.shields.io/badge/⭐_Star_on_GitHub-Support_Project-f1e05a?style=for-the-badge&logo=github&logoColor=black" />
-  </a>
-</p>
 
 ---
 
